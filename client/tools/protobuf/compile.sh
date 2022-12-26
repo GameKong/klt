@@ -11,7 +11,7 @@ cp ${tmp_dir}/*.js ${target_dir}
 cp ${tmp_dir}/*.d.ts ${target_dir}
 
 # 拷贝js和ts到服务器项目
-server_dir="../../wss/src/protocol"
+server_dir="../../../server_websocket/src/protocol"
 cp ${tmp_dir}/*.js ${server_dir}
 cp ${tmp_dir}/*.d.ts ${server_dir}
 

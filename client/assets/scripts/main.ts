@@ -4,7 +4,6 @@ import { dh } from './dh';
 import { VERSION_CODE } from './version';
 import { NetManager } from "./core/netManager";
 import LOGIC from "./net/protocol/pb_logic";
-import { CMD_NAME } from './core/protocolConfig';
 import { UIManager } from './core/uiManager';
 import { UIHelper } from './tools/uiHelper';
 
