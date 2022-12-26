@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@types/ws": "^8.5.3",
+    "ws": "^8.11.0",
+    "protobufjs": "^7.1.2"
+  },
+  "name": "wss",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "./src/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run compile-ts && npm run open-server",
+    "compile-ts":"cd ./src && tsc",
+    "open-server":"node ./src/index.js"
+  },
+  "author": "kongl",
+  "license": "ISC"
+}
