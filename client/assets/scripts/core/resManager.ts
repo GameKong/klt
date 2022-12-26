@@ -31,13 +31,7 @@ let white_res: LoadList[] = [
                 "prefabs/blackLayer"
             ]],
             [SpriteAtlas, [
-                "images/avatar_1",
-                "images/avatar_2",
-                "images/equipment",
-                "images/item_1",
-                "images/item_2",
                 "images/public",
-                "images/ui_no_compress",
             ]]
         ])
     }

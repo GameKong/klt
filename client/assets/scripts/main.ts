@@ -76,12 +76,12 @@ export class main extends Component {
         //     spp.setAnimation(0, "en", false);
         // });
 
-        let data = await dh.resManager.loadRes("resources", "logo/logo_new", Prefab) as Prefab;
-        var node =  instantiate(data);
-        this.g_root.addChild(node)
-        var spp:sp.Skeleton = node.getComponent(sp.Skeleton);
-        spp.premultipliedAlpha = false;
-        spp.setAnimation(0, "en", false);
+        // let data = await dh.resManager.loadRes("resources", "logo/logo_new", Prefab) as Prefab;
+        // var node =  instantiate(data);
+        // this.g_root.addChild(node)
+        // var spp:sp.Skeleton = node.getComponent(sp.Skeleton);
+        // spp.premultipliedAlpha = false;
+        // spp.setAnimation(0, "en", false);
     }
 
     testNetManager() {
