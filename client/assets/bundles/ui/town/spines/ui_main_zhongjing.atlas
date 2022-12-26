@@ -1,0 +1,90 @@
+
+ui_main_zhongjing.png
+size: 499,657
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/glow
+  rotate: false
+  xy: 401, 160
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ui_common/white
+  rotate: false
+  xy: 171, 412
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_leaf3
+  rotate: false
+  xy: 459, 1
+  size: 16, 10
+  orig: 16, 10
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_leaf4
+  rotate: false
+  xy: 171, 514
+  size: 8, 9
+  orig: 8, 9
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing
+  rotate: true
+  xy: 171, 180
+  size: 230, 228
+  orig: 236, 236
+  offset: 3, 4
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing1
+  rotate: false
+  xy: 1, 536
+  size: 341, 120
+  orig: 346, 124
+  offset: 2, 2
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_mask
+  rotate: true
+  xy: 273, 412
+  size: 107, 63
+  orig: 110, 70
+  offset: 1, 4
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_shuijing
+  rotate: true
+  xy: 344, 623
+  size: 28, 62
+  orig: 30, 64
+  offset: 1, 1
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_tree1
+  rotate: false
+  xy: 1, 1
+  size: 347, 177
+  orig: 352, 182
+  offset: 2, 3
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_tree2
+  rotate: true
+  xy: 1, 180
+  size: 354, 168
+  orig: 358, 172
+  offset: 2, 2
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_tree3
+  rotate: true
+  xy: 350, 1
+  size: 157, 107
+  orig: 162, 112
+  offset: 2, 3
+  index: -1
+ui_main_zhuchangjing/zcj_zhongjing_tree4
+  rotate: true
+  xy: 344, 412
+  size: 209, 154
+  orig: 214, 160
+  offset: 2, 3
+  index: -1

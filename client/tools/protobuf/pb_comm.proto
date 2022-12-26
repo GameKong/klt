@@ -1,0 +1,1758 @@
+message pb_player
+{
+    required string name = 1; //名字
+    required int32  logo = 2; //头像id
+    optional int32  gid = 3; //公会id
+    optional string gname = 4;   //工会名字
+    optional int32 border = 5;   //头像框
+    optional int32 glv = 6;   //公会等级
+    optional string country = 7; // 国家/地区[可能为空]
+    optional string sds = 8; 	 // 省/直辖市(中国)或者其他类似概念[可能为空]
+    optional string city = 9;    // 城市[可能为空]
+}
+
+message pb_server
+{
+    required int32  sid = 1;
+    required string sname = 2;      //server name
+    optional string pname = 3;      //player name
+    optional int32  plogo = 4;       //player name
+    optional int32  plv = 5;         //player lv
+    optional int32  flag = 6;        //1：新；2：维护中
+    optional int32  uid = 7;          //各个区服各个角色uid
+    optional int32 border = 8;   //头像框
+  }
+
+// 玩家经验，vip经验 金币等等全部作为item处理
+message pb_item
+{
+	required int32 id = 1; // item表中id
+	required int64 num = 2; // item个数
+}
+
+
+message pb_equip
+{
+	required int32 id = 1;
+	required uint32 num = 2;
+	optional int32 eid = 3; //有eid就是高级职业套装
+  optional int32 hid =4;
+}
+
+message pb_bag
+{
+	repeated pb_item items = 1;
+	repeated pb_equip equips = 2;
+}
+
+message pb_hero_qlc
+{
+  optional int32 lv  = 1; // 资质等级, lv mod 100为资质等级
+  optional int32 atk = 2; // 攻击
+  optional int32 hp  = 3; // 血量
+  optional int32 spd = 4; // 速度
+  optional int64 attr_idx = 5; // 随机属性2进制索引[0~4个]
+  optional int32 time = 6; // 后端使用时间戳
+  optional int32 cd = 7; //上架倒计时
+}
+
+message pb_hero_qlt
+{
+  optional pb_hero_qlc qlc  = 1; // 当前资质
+  repeated pb_hero_qlc qlcs = 2; // 资质背包
+  optional int64 attr_idx   = 3; // 洗练未选择属性
+}
+
+message pb_tree
+{
+  optional int32 lv     = 1; // 躯干等级
+  optional int32 blv    = 2; // 突破: 1 ~ 5，没有就不给
+  repeated int32 bra    = 3; // 4个树杈,没有就不给
+}
+
+message pb_hero //英雄信息
+{
+    required int32 hid = 1; //英雄id
+    required int32 id = 2; //对应配置表中的id，用于客户端查询 头像等等资源
+    required int32 lv = 3; //经验
+    required int32 star = 4; //星级经验
+    optional int32 flag = 5; //自定义  第一位 ： 竞技场中， 第二位 被锁定 第三位：3v3竞技场, 第四位 : 跨服竞技场 , 第五位 :世界竞技场, 第六位 : 房主 ,第七位 : 房客  第八位 : 星空竞技场， 第九位：资质pvp
+    repeated pb_equip equips = 6; //装备,
+	optional int32 wake = 7;// 觉醒次数
+    repeated int32 jade = 8;//水晶槽
+    optional bool visit = 9;//是否隐藏皮肤
+    repeated int32 skill_id = 10; //赋能技能
+    repeated pb_sattr sattrs = 11; // 时空英雄技能效果
+    optional pb_hero_qlt qlt = 12; // 资质
+    optional pb_tree    tree = 13; // 生命根源
+}
+
+// 时空英雄技能效果
+message pb_sattr
+{
+    optional int32 id = 1; // 节点编号
+    optional int32 attr = 2; // 属性索引
+    optional int32 value = 3; // 普通: 等级 技能: 是否激活 0:未激活 1:激活
+}
+
+// 时空漩涡关卡
+message pb_dup
+{
+    optional int32 id = 1; // 节点编号
+    repeated int32 bids = 2; // 保护buff id  可购买
+    optional int32 sts = 3; // 完成状态 1：已通关
+    optional int32 mid = 4; // 怪物id
+    optional int32 rid = 5; // 关卡资源id
+    optional int32 skip = 6; // 是否可以跳过关卡
+}
+
+message pb_embr
+{
+	optional int32 uid  =1;
+	optional int32 lv  = 2;
+	optional int32 status = 3; // 时空漩涡 冲榜排行榜领取状态
+	optional string stime = 4;
+	optional int32 logo = 5;
+	optional string name  = 6;
+    optional int32 border = 7;
+    optional int32 id = 8;
+}
+
+// 虚空之门格子
+message pb_scell
+{
+    optional int32 pos = 1; // 坐标位置：x * 10000 + y, x和y为x轴和y轴坐标
+    optional int32 status = 2; // 小地图-》 1: 没走过 2: 走过 3:当前所在没通关 4:当前所在并且通关;  大地图 -》* 100 1: 没触发 2:已触发未完成 3: 已完成
+    optional int32 id = 3; // 事件id
+    repeated int32 ids1 = 4; // boss、怪物列表, 派遣条件列表阵营,神像ID列表，水晶id, 小地图中的格子阵营
+    repeated int32 ids2 = 5; // boss、怪物血量百分比， 派遣条件列表职业, 小地图中的格子类型
+}
+
+// 虚空飞船采集器、能量核心
+message pb_sbuilding
+{
+    optional sint32 lv = 1; // 等级
+    optional sint32 cd = 2; // 正在生产倒计时
+    optional sint32 num = 3; // 数量
+}
+
+// 虚空飞船星点信息
+message pb_sscell
+{
+    optional int32 pos = 1; // 坐标位置：x * 100 + y, x和y为x轴和y轴坐标
+    optional int32 status = 2; // 1: 没解锁 2: 已解锁未完成 3:已完成
+    optional int32 id = 3; // 类型
+    optional int32 boss_id = 4; // boss id
+    repeated int32 boss_hp = 5; // boss hp
+    optional pb_pmbr mbr = 6; // 匹配到的玩家名字
+    optional int32 hid = 7; // 派遣英雄的hid
+    optional int32 cd = 8; // 派遣倒计时 采集倒计时
+    optional int32 lv = 9; // 开采时的采集器等级
+    optional int32 add = 10; //派遣英雄星级积分加成百分比，乘以1000
+    optional int32 times = 11; // 已经采集次数
+    optional int32 rid = 12; // 派遣的英雄id
+    optional int32 wake = 13; // 派遣的英雄wake
+    optional int32 rlv = 14; // 派遣的英雄lv
+    optional int32 rqlv = 15; // 派遣的英雄的资质
+}
+
+message pb_ssevent
+{
+    optional int32 id = 1; // 类型
+    optional int32 num = 2; // 次数
+    optional int32 lv_item = 3; // 升级道具
+    optional int32 score = 4; // 获得积分
+    optional int32 num2 = 5; // 掠夺和boss 赢了多少次
+    repeated pb_bag reward = 6; //展示奖励
+}
+
+message pb_sssweep
+{
+    optional int32 pos = 1; // 坐标位置
+    optional int32 hid = 2; // 派遣的英雄
+}
+
+// 免费gacha信息
+message pb_gacha
+{
+	required int32  item = 1; //道具抽免费时间长度，
+    required int32  gem = 2; //钻石抽免费时间长度，
+    optional int32  id = 3; //召唤活动指定英雄id
+    optional int32  act = 4; //活动对应的抽卡次数
+    optional int32  cd = 5; //活动倒计时
+}
+
+message pb_mail //邮件信息
+{
+    required int32 mid = 1; //邮件id
+    required int32 id  = 2; //对应表里id
+    optional int64 uid = 3; //聊天邮件发件人的uid new, 32 -> 64
+    required int32 flag = 4; // 邮件状态 0: 初始状态 1: 已读 2:已领取
+    required int32 send_time = 5; // 发送时间  时间戳
+    optional string title = 6; //标题
+    optional string from = 7;  //发件人
+    optional string content = 8; //内容
+    optional string content_o = 9; //原内容
+    optional pb_bag affix = 10; //附件
+}
+
+message pb_cunit
+{
+	required int32 id = 1;
+	optional int32 lv = 2;
+	optional int32 star = 3;
+	optional int32 power = 4;
+	optional int32 hp = 5;
+	optional int32 atk = 6;
+	optional int32 armor = 7;
+	optional int32 spd = 8;
+	optional int32 wake = 9;
+    optional int32 skin = 10;
+    optional int32 stl = 11;
+    optional int32 qlv = 12;    // mod 100为具体的英雄资质等级
+    optional pb_tree tree = 13; // 分享
+    optional int32 core = 14; // 同pb_unit.core
+
+}
+
+
+// type: 聊天类型
+// 1: 世界聊天; 2: 公会聊天；3: 公会招募
+// 14: 跨服公会邀请; 4: 废弃；5: 家园组队邀请
+message pb_chat
+{
+	optional int64 uid  = 1; // 32 -> 64
+	optional int32 logo = 2;
+	optional int32 lv = 3;
+	optional int32 vip = 4;
+	optional string name = 5;
+	optional int32 type = 6; 
+	optional string text = 7;
+	optional int32 time = 8;
+	optional int32 share_id = 9; //分享英雄的id
+	optional int32 hero_id  = 10;
+	optional int32 final_rank = 11; //公会战决赛排名
+	optional int32 gid  = 12;       //公会id
+	optional string gname  = 13;     //公会name
+	optional int32 glv  = 14;       //公会level
+	optional string gmsg  = 15;      //公会 邀请信息
+	optional int32 gFight  = 16;      //公会战 阵容设置; 值为公会id，不是邀请消息就不同步该字段
+        optional int32 border = 17;   //头像框
+	optional pb_hteam hteam = 18; // 家园组队
+        optional string country = 19; // 国家/地区[可能为空]
+        optional string sds = 20; 	 // 省/直辖市(中国)或者其他类似概念[可能为空]
+        optional string city = 21;    // 城市[可能为空]
+}
+
+message pb_upfile
+{
+	required string md5 = 1;
+	required string path = 2;
+}
+
+message pb_good
+{
+    required int32 id = 1;   //物品id
+    required int32 type = 2; //1: item  2: equip
+    required int32 count = 3;
+    required int32 excel_id = 4;   //该物品对应于当前商店表中的id。用于查询物品价格，是否限购等。
+    optional int32 bought = 5;  //是否已购买过
+}
+
+// onestore
+message pb_onepay
+{
+    required string tid = 1;
+    optional string txid = 2;
+    optional string tdate = 3;
+}
+
+message pb_hook
+{
+	required sint32 status = 1; // -1 : 未初始化  0 : ok
+	optional int32  hook_stage = 2;
+	optional int32  boss_cd = 3; // 挑战boss的cd时间
+	optional int32  poker_cd = 4; // 掉落的cd
+	optional pb_bag reward = 5; // 落
+	optional int32  pve_stage = 6;
+	optional pb_bag extra = 7;  //活动掉落
+  repeated pb_item ids = 8; //可选道具ID
+        optional uint32 hard_stage = 9;  // 困难模式关卡
+}
+
+message pb_frd
+{
+  required int32  logo = 1;
+  required string name = 2;
+  required int32  lv = 3;
+  optional int32  flag = 4;  // first bit ：已发送  second bit  : 好友赠送我， third bit : 我已经领取了
+  optional int64  uid  = 5; // uid: int32 -> int64, new
+  optional int32  last = 6;  //上次在线时间,0:在线
+  optional int32 power = 7; //好友战斗力
+  optional int32 border = 8;   //头像框
+  optional string country = 9;  // 国家/地区[可能为空]
+  optional string sds = 10; 	// 省/直辖市(中国)或者其他类似概念[可能为空]
+  optional string city = 11;    // 城市[可能为空]
+}
+
+message pb_friend
+{
+    repeated pb_frd friends = 1;
+	required int32  love = 2; //cd时间内收到的爱心个数
+	required int32 cd = 3; //刷新时间
+    repeated pb_frd apply = 4; //申请列表
+    repeated pb_frd recmd = 5; //推荐列表
+}
+
+message pb_casino_item
+{
+    required int32 type = 1;     //物品类型，1：道具；2装备
+    required int32 id = 2;       //物品对应id
+    required int32 count = 3;
+    optional int32 cool = 4;     //是否高品质物品
+    optional int32 limitBuy = 5; //该物品当前还可以抽到多少次，-1表示不限购
+    optional int32 weight = 6;   //权重
+}
+
+message pb_casino_msg
+{
+    required string name = 1;      //玩家名字
+    required int32 type = 2;       //物品类型
+    required int32 id = 3;         //物品对应id
+    required int32 count = 4;      //物品数量
+}
+
+message pb_gmember
+{
+    required int64 uid = 1;         //玩家uid, 32 -> 64
+    required string name = 2;       //名字
+    optional int32 lv = 3;         //等级经验
+    optional int32 logo = 4;        //头像
+    optional int32 last = 5;        //上次在线时间,0:在线
+    optional int32 title = 6;       //头衔，0：普通；1：管理员；2：会长
+    optional int32 power = 7;       //防御战力
+    optional int32 gfight = 8;       //是否报名了工会战，1:已包名; 0:未报名
+    optional int32 border = 9;   //头像框
+    optional int32 cwar = 10;        //是否设置了锦标赛阵容，1:已设置; 0:未设置
+    optional string country = 11; // 国家/地区[可能为空]
+    optional string sds = 12; 	  // 省/直辖市(中国)或者其他类似概念[可能为空]
+    optional string city = 13;    // 城市[可能为空]
+}
+
+message pb_guild
+{
+    required int32 id = 1;          //公会id
+    required string name = 2;       //公会名字
+    required int32 logo = 3;        //棋标id
+    required int32 exp = 4;         //经验
+    optional string notice = 5;     //公告
+    optional int32 power = 6;       //公会战力
+    optional int32 rank = 7;        //排名
+    optional int32 members = 8;        //人数
+    optional string pname = 9;     //会长名字
+    optional int32 dismiss_cd = 10; //解散倒计  时
+    optional int32 flag = 11 ;  //  1 : 申请过的
+}
+
+message pb_glog  //公会日志
+{
+  required int32 type = 1;      //事件类型 1:创建公会，2：加入公会，3：任命官员，4：罢免官员，5：逐出公会，6：转让会长 7:退出公会
+  optional int32 time = 2;      //事件时间==> unix时间戳
+  optional string obj_name = 3;    //事件作用对象
+  optional string do_name = 4;      //事件发起对象
+}
+
+// flag: 
+// 设置阵容时, 客户端传递第8位标记为队长;
+// 服务器返回给客户端时：
+// 6位：家园房主;[老的]; 7位：家园房客；[老的]
+// 8位: 队长身份标识
+// core:
+// 1 ~ 4: 生命核心(0星 ~ 15星)
+// 5 ~ 8: 突破标识(突破: 0 ~ 15)
+// 9 ~ 11: 队友生命核心数量(0 - 7)
+message pb_unit
+{
+  optional int32 hid = 1; // 自己为hid 别人的为id
+  optional int32 id = 2;
+  optional int32 pos = 3;  //英雄任务不需要pos信息
+  optional int32 lv =  4; //用于对方英雄展示
+  optional int32 star = 5; //同上
+  optional int32 energy = 6; // 初始能量
+  optional int32 hpp = 7; // 血量百分比
+  optional int32 wake = 8; // 觉醒
+  optional int32 skin = 9; // 皮肤
+  optional int32 stl = 10;  // 天赋技能阶段
+  optional int32 flag = 11[default = 0]; //家园房主标识
+  optional int32 ex2 = 12;  //预留字段[资质等级]
+  optional int32 core = 13; //生命核心属性
+  optional int32 ex4 = 14;  //预留字段
+  repeated int32 bra = 15;  //躯干对应编号
+}
+
+//trial : sync
+message pb_strial
+{
+    required int32 id = 1;
+    required int32 tl = 2;
+    required int32 cd = 3;
+}
+
+//试炼排行榜，试炼查看录像用
+message pb_trial
+{
+    required int32 logo = 1;         //头像
+    required int32 lv = 2;
+    required string name = 3;           //名字
+    optional int32 power = 4;           //战斗力
+    optional int32 stage = 5;        //通关层数
+    optional pb_evideo video = 6;
+    optional int32 border = 7;   //头像框
+    optional int64 uid = 8; //区服+uid
+}
+
+message pb_plog
+{
+    required pb_pmbr rival = 1; //对方
+	  required bool    atk = 2; //1 ：自己为进攻方， 2，防守方
+    required bool    win  = 3; // 是否胜利
+    repeated int32   vid  = 4; //录像ID
+	  required int32   time = 5; //时间戳
+	  required int32   score = 6; //得分
+      repeated bool  wins = 7 ;// 3v3竞技场每场胜负
+}
+
+message pb_p3plog
+{
+    optional pb_p3pmbr def = 1; //对方
+	optional bool    atk = 2; //1 ：自己为进攻方， 2，防守方
+    optional bool    win  = 3; // 是否胜利
+    optional int32   vid  = 4; //录像ID
+	optional int32   time = 5; //时间戳
+	optional int32   score = 6; //得分
+}
+
+message pb_pmbr
+{
+    optional string name = 1; //名字 非自己使用
+    optional int64 uid = 2;  // 非自己使用, new, 32 -> 64
+    optional int32 lv = 3; // 非自己使用
+	optional int32 logo = 4; //非自己使用
+    optional int32 score = 5; //得分
+    optional int32 power = 6; //战斗力
+    optional int32 rank = 7;  // 排名
+    optional string gname = 8; //公会名字 非自己使用
+    optional int32 trank = 9; //最高排名 自己使用
+	optional int32 tscore = 10; //最高得分
+    repeated pb_unit camp = 11; //战队
+	 optional int32 win = 12; //胜ch
+	 optional int32 fight = 13; //战斗过的次数 自己使用
+	 optional int32 sid = 14; // 3v3竞技场中使用，表示该用户区服，非自己试用
+    optional int32 border = 15;   //头像框
+    optional int32 ptype = 16;   //3v3 对手难度 1:困难 2:普通 3:简单
+}
+
+message pb_p3pmbr
+{
+    optional string name = 1; //名字 非自己使用
+    optional int64 uid = 2;  // 非自己使用
+    optional int32 lv = 3; // 非自己使用
+	optional int32 logo = 4; //非自己使用
+    optional int32 lbox = 5;   //头像框
+    optional int32 power = 6; //战斗力
+    optional int32 rank = 7;  // 排名
+    optional int32 score = 8;  // 积分
+    repeated pb_unit camp = 9; //阵容
+}
+
+message pb_smbr
+{
+    optional string name = 1; //名字 非自己使用
+    optional int64 uid = 2;  // 非自己使用
+    optional int32 lv = 3; // 非自己使用
+	optional int32 logo = 4; //非自己使用
+    optional int32 lbox = 5; //头像框
+    optional int32 score = 6; //得分
+    optional int32 like = 7; //点赞数
+    optional string cluster = 8; //渠道
+    optional string udk = 9; //udk
+    optional string gname = 10;//公会名
+    repeated pb_unit camp = 11;//队伍
+    repeated int32 skls = 12; //技能
+    optional sint32 power = 13;//战力
+    repeated sint32 hide = 14; //隐藏的队伍ID，[1,2]
+}
+
+message pb_smbrs
+{
+    repeated pb_smbr mbrs = 1; // 其他人的数据
+    optional int32 score = 2; // 自己的积分
+    optional int32 rank = 3; // 自己的排名
+  optional int32 like = 4; // 自己点赞数
+}
+
+message pb_template
+{
+    optional int32 id = 1; // 1~3功能区 1001~1006住宅区
+    optional string name = 2;
+    repeated pb_buildings buildings = 3;
+    repeated pb_room rooms = 4;
+}
+
+// 竞技场状态信息,包含是否开启等
+message pb_pvp
+{
+    required int32 id = 1;
+    required sint32 status = 2; // -1：未参加竞技场
+    optional pb_pmbr self = 3; //自己信息
+    optional int32 season_cd = 4; //本赛季剩余时间
+    optional int32 daily_cd =  5; //
+}
+
+// 世界竞技场
+message pb_wpvp
+{
+    required int32 wid = 1;          //赛季id
+    optional int32 flag = 2; 	     //阶段
+    optional int32 cd = 3;           //倒计时
+}
+
+// 世界jjc玩家详情
+message pb_wmbr
+{
+    optional int64 uid = 1;          //全局uid(sid * 100000000 + 真实uid)
+    optional string gname = 2;        //公会名字
+    optional int32 score = 3;        //积分
+    optional string name = 4;        //名字
+    optional int32 logo = 5;         //头像
+    optional int32 lv = 6;           //等级
+    optional int32 power = 7;        //战力
+    optional int32 lbox = 8;         //头像框
+    optional int32 like = 9;         //点赞
+    optional bool king = 10;         //王者
+    optional int32 num = 11;         //挑战次数
+}
+
+// 巅峰对决,组对战详情关系链
+message pb_link
+{
+    optional int32 cd = 1;      //对战cd(0或者为空-战斗已经结束)
+    optional int32 win = 2;     //胜利方索引
+    optional int64 vid = 3;     //录像组编号
+}
+
+// 世界jjc对决队伍战斗摘要
+message pb_wlog
+{
+    optional int64 vid = 1;     //录像id
+    repeated pb_unit atk = 2;   //攻击者队伍
+    repeated pb_unit def = 3;   //防守方队伍
+    required bool win = 4;      //以atk为准
+}
+
+// 世界jjc对决录像结构
+message pb_wvideo
+{
+    repeated pb_unit atk = 1;	//攻击方
+    repeated pb_unit def = 2;	//防守方
+    repeated bytes frames = 3;	//录像数据
+    repeated pb_hurts hurts = 4;//伤害统计
+    required bool win = 5; 		//对于atk来
+}
+
+// 世界jjc分数结构
+message pb_wscore
+{
+    required sint32 score = 1;  //当前分数
+    required sint32 delta = 2;  //变化分数
+    optional bool king = 3;  //王者
+}
+
+// 世界jjc分数结构
+message pb_wcamp
+{
+    repeated pb_unit camp = 1;  //阵容列表
+}
+
+// 世界jjc记录结构
+message pb_wloger
+{
+    required int64 vid = 1;     //记录id
+    optional pb_wmbr mbr = 2;   //敌方信息
+    optional int32 time = 3;    //时间
+    optional bool atk = 4;      //是否为攻击方
+    optional bool win = 5;      //本方输赢
+    optional sint32 delta = 6;   //分数
+}
+
+message pb_pvideo
+{
+    optional int32      id = 1; // 单拉时候返回
+    optional pb_pmbr    atk = 2; //同上 p3p:7-12为替补 13为战宠
+    optional pb_pmbr    def = 3; // 同上
+	required bool       win = 4;  //1 : win -1:lose by atker
+    repeated bytes      frames = 5;
+    optional sint32     ascore = 6 ;//进攻方得分
+    optional sint32     dscore = 7; //防守方得分
+    optional sint32     adelta = 8;
+    optional sint32     ddelta = 9;
+    repeated pb_hurts   hurts = 10;
+	repeated pb_bag     rewards = 11;
+	optional int32      select = 12; // 被选中的rewards ID
+	//repeated bytes      frames1 = 13; // p3p 第二场录像
+	//repeated bytes      frames2 = 14;// p3p 第三场录像
+    //repeated pb_hurts   hurts1 = 15;  // p3p第二场伤害统计
+    //repeated pb_hurts   hurts2 = 16;  // p3p 第三场伤害统计
+	//repeated bool       wins  = 17; // p3p三场胜负
+
+}
+
+message pb_p3pvideo
+{
+    optional pb_p3pmbr  atk = 1; //同上 p3p:7-12为替补 13为战宠
+    optional pb_p3pmbr  def = 2; // 同上
+	required bool       win = 3;  //1 : win -1:lose by atker
+    repeated bytes      frames = 4;
+    repeated pb_hurts   hurts = 5;
+    optional sint32     ascore = 6 ;//进攻方得分
+    optional sint32     dscore = 7; //防守方得分
+    optional sint32     adelta = 8;
+    optional sint32     ddelta = 9;
+    repeated pb_bag     rewards = 10;
+	optional int32      select = 11; // 被选中的rewards ID
+}
+
+message pb_htask_info
+{
+    optional int32 tid = 1;   // 任务id
+    repeated int32 hids = 2;  // 派遣的英雄hid
+    repeated int32 heads = 3; // 派遣的好友头像id
+}
+
+message pb_htask_cond
+{
+    required int32 type = 1; // 1表示职业  2表示品质  3表示阵营
+    optional int32 faction = 2;
+}
+
+message pb_htask_sync
+{
+    required int32 cd = 1;
+    repeated pb_htask tasks = 2;
+}
+
+message pb_htask
+{
+    required int32 tid = 1; //任务id
+    required int32 id = 2;  //配置表中id
+    optional int32 cd = 3;  //正在进行的任务 结束倒计时
+    repeated pb_unit heroes = 4;  //在进行此任务的英雄列表
+    optional pb_bag reward = 5;
+    repeated pb_htask_cond conds = 6;
+    optional int32 power = 7;  //在进行此任务的英雄总战斗力
+    optional int32 lock = 8; //是否已经锁定
+    required int32 nameid = 9;  //名字id
+    repeated int32 heads = 10; // 当前任务联合派遣头像
+}
+
+message pb_evideo
+{
+	repeated bytes frames = 1;
+	optional bool  win = 2;
+	optional pb_bag reward = 3;
+    repeated pb_unit camp = 4;
+    repeated pb_hurts hurts = 5;
+}
+
+message pb_hurts
+{
+    required int32 pos = 1; //13进攻方魔兽，14防守方魔兽
+    required int64 value = 2;
+	optional int64 heal = 3; //治疗
+}
+
+message pb_alogin  // 累计登陆
+{
+    required string flag = 1;   // 二进制字符串 低位表示第一个
+    optional int32 cd = 2;
+    optional int32 idx = 3;     //1表示前30天，31：表示31-60.  固定2个值1或31
+    optional int32 num = 4;     //0表示兑换按钮不显示,否则表示可兑换个数(星光碎片数量)背包小于这数量按钮不能兑换
+    optional int32 cd2 = 5;     //兑换倒计时0,表示不能兑换了
+    optional int32 first = 6;  //1是当天第一次登录，0不是
+}
+
+/*
+* id = 1 ==> 首冲礼包 (id, status, cd): status(0:未充值;1:已充值未领取;2:已充值已领取) cd(对应各阶段倒计时)
+*/
+message pb_act
+{
+    required uint32 id = 1;
+    optional int32 status = 2;
+    optional uint32 cd = 3;
+    optional int32 limits = 4;
+    optional int32 read = 5;        //0:未查看的新活动；1:已查看（包括旧活动）
+    optional uint32 next = 6;       //下次礼包可刷新的时间
+    optional int32 loop = 7;        //特殊轮数使用
+    optional int32 bomb = 8;        //弹出计数器
+    optional pb_monopoly monopoly = 9;        //大富翁
+    optional string code = 10;      //优惠券
+    optional int32 limits2 = 11;
+    optional int32 bir = 12;
+    optional pb_kvs kv = 13;        //临时使用
+    repeated pb_growup grow = 14;  // 周年庆成长礼数据
+}
+
+message pb_qstar
+{
+  optional int64 uid = 1; //  sid(11位+) + uid(低8位) + 渠道id(低2位)
+  optional string name = 2;
+  optional int32 logo = 3;
+  optional uint32 score = 4;
+}
+
+message pb_monopoly
+{
+	required int32 pos = 1; // 当前位置
+    repeated int32 lv = 2; // 建筑等级
+    optional int32 next_event = 3; // 下一次触发事件
+    optional int32 star = 4; //星星数量
+}
+
+
+message pb_monopoly_step
+{
+    required int32 id = 1; // 建筑id
+    repeated pb_item reward = 2; // 产出
+    optional int32 star = 3; // 星星数
+    optional int32 event = 4; // 事件
+    repeated int32 cards = 5; // 牌子
+    optional int32 op_id = 6; // id为建筑编
+}
+
+message  pb_sact_item
+{
+    required uint32 id = 1;	   // 活动id
+    optional uint32 cd = 2;       // 活动结束cd
+    optional int32 bomb = 3;       // 是否弹窗（年夜派对 新春福礼获取达标的进度，按活动id对应达标顺序 新春成长礼是否激活额外奖励）
+    optional int32 limits = 4;     // (情人节抽英雄 概率)
+    optional uint32 next = 5;	  // (新春成长礼 今天分数 年夜派对 已选择的英雄)
+    repeated pb_sact_maze maze = 6;   // 地图活动
+    optional uint32 spec = 7;     // 新年成长额外id
+}
+
+message pb_ract_item
+{
+    required uint32 id = 1;	   // 活动id
+    repeated uint32 rewards = 2; //已经领取的关卡id
+    repeated pb_item item = 3; //新手赏金任务进度
+    optional int32 day = 4; //第几天登录
+    optional int32 cd = 5; //当天结束的倒计时
+}
+
+message pb_sact_maze
+{
+    required int32 pos = 1;    // 道具位置
+    optional int32 id = 2;     //道具id
+    optional pb_bag rewards = 3;    // 道具奖励
+    optional int32 num = 4;
+}
+message pb_sact_log
+{
+    optional int32 time = 1;    // 当前时间 - 抽奖时间
+    optional int32 result = 2;    // 抽奖结果
+}
+
+message pb_mact
+{
+    required uint32 cd = 1;
+    repeated pb_item war = 2;
+    repeated pb_item htask  = 3;
+    repeated pb_item hmerge = 4;
+    optional int32 space_st = 5;
+    repeated pb_item brave = 6;
+    optional int32 status = 7;  //判断新老活动 0:老  1：新
+    repeated pb_item hmerge2 = 8;
+}
+
+message pb_task
+{
+    required int32 id = 1;          //任务id
+    required int32 count = 2;       //已经完成的次数
+    required int32 is_claim = 3;    //任务奖励是否已经领取,0:没有,1:已经领取
+}
+
+message pb_online
+{
+    required int32 id = 1;          //下次在线奖励对应id, 完成时id为0
+    optional int32 cd = 2;          //下次在线奖励倒计时
+}
+
+message pb_sachieve
+{
+    repeated int32 num = 1;  //按type顺序返回每个type完成的数量
+    repeated int32 id = 2;   //返回已领取的id
+    repeated int32 curnum = 3; //当前次数，非最大次数
+}
+
+message pb_hmarket
+{
+    required int32 id = 1; //表中id
+    optional int32 num = 2; //已售出多少个
+    optional int32 cd = 3; //限时CD
+}
+
+message pb_gmarket
+{
+    required int32 id = 1; //表中id
+    optional int32 num = 2; //已售出多少个
+    optional int32 gid = 3; //随机索引
+}
+
+message pb_gvrank
+{
+    required int64 uid = 1; // 32 -> 64
+    optional string name = 2;
+    optional int32 lv = 3;
+	optional int32 logo = 4;
+    required int64 hurt = 5;
+    optional pb_bag reward = 6;
+    optional int32 border = 7;   //头像框
+}
+
+message pb_gvrank_donate
+{
+    required string name = 1;       //名字
+    required int32 lv = 2;         //等级经验
+    required int32 logo = 3;        //头像
+    optional int32 num = 4;        //积分
+}
+
+message pb_bboss
+{
+    required int32 uid = 1;
+    optional string name = 2;
+    optional int32 lv = 3;
+	optional int32 logo = 4;
+    required uint64 hurt = 5;
+    optional int32 sid = 6;
+}
+
+message pb_gskl
+{
+	required int32 id = 1;
+	required int32 lv = 2; // 学过的等级
+}
+
+message pb_bunit // 勇者试炼玩家英雄信息
+{
+    optional int32 hid = 1; // 自己为hid 别人的为id
+    optional int32 id = 2;
+    optional int32 lv =  3; //用于对方英雄展示
+    optional int32 star = 4; //同上
+    optional int32 hpp = 5; // 生命百分比
+    optional int32 pos = 6; // 对方英雄使用
+	optional int32 wake = 7; //觉醒,
+	optional int32 revive = 8 ;
+	optional int32 skin = 9; //皮肤
+    optional int32 flag = 10;
+    optional int32 qlv  = 11; // 资质等级
+    optional int32 core = 12; // 同pb_unit里面的core
+}
+
+message pb_benemy
+{
+    required int32 logo = 1;
+    required int32 lv = 2;
+    required string name = 3;
+    required int32 power = 4;
+    required int32 sid = 5;
+    repeated pb_bunit camp = 6;
+    optional int32 border = 7;   //头像框
+}
+
+message pb_ngwshold
+{
+    optional int32  left = 1; // 准备期：人数， 战斗期：剩余队伍
+    optional int32  total = 2; // 总队伍
+    repeated pb_ngwbuff buffs = 3; // buff
+    optional int64  power = 4; // 总战斗力
+}
+
+// 公会
+message pb_ngwrank
+{
+    optional int32  gid = 1; // 公会id, 64 -> 32
+    optional int32  score = 2; // 积分
+    optional int32  seg = 3; // 段位
+    optional int32  time = 4; // 时间
+    optional int32  logo = 5; // 公会旗子
+    optional string  name = 6; // 公会名字
+    optional int64  power = 7; // 公会总战力
+}
+
+// 个人
+message pb_ngwprank
+{
+    optional int64 uid = 1; //全局uid(sid * 100000000 + 真实uid)
+    optional string  name = 2; // 名字
+    optional int32  lv = 3; // 等级
+    optional int32  logo = 4; // 头像
+    optional int32  lbox = 5; // 头像框
+    optional string  gname = 6; // 公会名
+    optional int32  score = 7; // 总积分
+    optional int32  time = 8; // 时间
+    optional int32  power = 9; // 战力
+    repeated int32  daily = 10; // 每日的积分
+}
+
+// buff
+message pb_ngwbuff
+{
+    optional int32  id = 1; // buff id
+    optional int32  num = 2; // 次数
+}
+
+// 队伍信息
+message pb_ngwmbr
+{
+    optional int32  idx = 1; // 队伍编号
+    optional int32  logo = 2; // 准备期:头像  战斗期:公会旗子
+    optional string  gname = 3; // 准备期:玩家名  战斗期:公会名
+    optional int32  power = 4; // 战斗力
+    optional int32  lv = 5; // 玩家等级
+    optional int32  lbox = 6; // 玩家等级
+    repeated pb_unit unit = 7;  //阵容
+    optional int64 uid = 8; //全局uid(sid * 100000000 + 真实uid) 准备期需要查看玩家信息
+    optional int32 gid = 9; //gid, 64 -> 32
+    optional int32  win = 10; // 输赢 1:赢 2:输 据点没打过就不发
+}
+
+// 锦标赛荣耀link
+message pb_clink
+{
+    optional int32 cd = 1;      //对战cd(0或者为空-战斗已经结束)
+    optional int32 atk = 2;
+    optional int32 def = 3;
+    optional int32 win = 4;     //胜利方索引
+    optional int64 vid = 5;     //录像组编号
+}
+
+// 锦标赛荣耀
+message pb_cgw_info
+{
+    optional int32  id = 1;
+    optional int32  logo = 2;
+    optional int64  power = 3;
+    optional string name = 4;
+}
+
+// 锦标赛 战斗记录玩家信息
+message pb_cgw_mbr
+{
+    optional int64  uid = 1;
+    optional int32  logo = 2;
+    optional int32  lv = 3;
+    optional int32  lbox = 4;
+    optional string name = 5;
+    repeated pb_unit camp = 6;
+}
+
+// 锦标赛 我的对战记录
+message pb_cgw_record
+{
+    optional int32  gid 	= 1;
+    optional int32  logo 	= 2;
+    optional int32  vid 	= 3;
+    optional int32  cd 		= 4;
+    optional int32  flag 	= 5;
+    optional int64  power 	= 6;
+    optional string name 	= 7;
+    optional bool   atk 	= 8;
+    optional bool   win		= 9;
+    optional int64  spower 	= 10;
+}
+
+// 锦标赛 战斗记录
+message pb_cgw_log
+{
+    optional pb_cgw_mbr  atk = 1;
+    optional pb_cgw_mbr  def = 2;
+    optional bool win = 3;
+}
+
+message pb_ngw_sweep
+{
+    optional int32 status = 1;  // 错误码
+    optional int32 id = 2;  // 据点id
+    optional int32 destroy = 3; //打败了多少支队伍
+}
+
+message pb_cd
+{
+	required int32  id = 1;        // 1: 磨坊订单，2：
+	required int32  cd = 2;        // -1: 未进行，0：达成，>0: 倒计时时间
+}
+
+
+message pb_gpvpteam
+{
+	optional int32 leader = 1;
+	repeated pb_pmbr mbrs = 2;
+	optional int32 sid = 3;
+	optional int32 score = 4;
+	optional int32 rank = 5;
+	optional int32 power = 6;
+	optional string name = 7;
+	optional int32 need_power = 8;
+	optional string password = 9;
+	optional int32  id = 10;
+    optional bool reg = 11;
+    optional int32 enegy = 12;
+    optional int32 enggy_cd = 13;
+}
+
+message pb_gpvplog
+{
+	required int32 log_id = 1;
+	required pb_gpvpteam enemy = 2;
+	optional sint32 score = 3;
+	optional bool   win = 4;
+	optional int32  time = 5;
+}
+
+
+message pb_gpvp_wlog
+{
+	required pb_gpvpteam atk = 1;
+	required pb_gpvpteam def = 2;
+	repeated bool wins = 3;
+	repeated int32 vids = 4;
+
+}
+
+
+message pb_pet
+{
+	required int32 id = 1;
+	required int32 lv = 2;
+	required int32 star = 3;
+	repeated int32 skl = 4; //被动技能列表
+
+}
+
+message pb_spkunit
+{
+	optional  pb_unit  base = 1;
+	repeated  pb_item  buf = 2;
+}
+
+message pb_spkmbr
+{
+	required int32 uid  =1;
+	required int32 lv  = 2;
+	required int32 wave = 3; // 时空漩涡 冲榜排行榜领取状态
+	required int32  time = 4;
+	required  int32 logo = 5;
+	required  string name  = 6;
+    optional int32 border = 7;   //头像框
+}
+
+message pb_holy
+{
+    required int32 id = 1;      //圣物id
+    required int32 pos = 2;     //圣物建造位置
+    optional int32 val = 3;     //体力圣物产出
+}
+
+message pb_mine
+{
+    required int32 id = 1;      //矿场id
+    required int32 pos = 2;     //矿场建造位置
+    required int32 val = 3;     //矿物产出
+}
+
+message pb_land
+{
+    required int32 id = 1;      //宝箱或者npc岛id
+    required int32 pos = 2;     //宝箱或者npc岛位置
+    optional int32 cd = 3;
+    optional int32 cdk = 4;     //验证是否过期
+    optional bool dead = 5;     //npc是否全部死亡
+}
+
+message pb_vit
+{
+    required int32 vit = 1;     //体力数值
+    optional int32 buy = 2;     //已买次数
+}
+
+message pb_ievent
+{
+    required int32 id = 1;      //事件id
+    optional int32 cd = 2;      //结束时间
+    optional string ext = 3;    //船队名字：
+    optional int32 sid = 4;    //船队区服
+    optional pb_bag reward = 5;   //只有奖励没有触发其他事件
+}
+
+message pb_iadt
+{
+    optional int32 dist = 1;          //已走路程
+    repeated pb_ievent mevts = 2;     //主动事件
+    repeated pb_ievent pevts = 3;     //被动事件
+    optional int32 vit = 4;          //体力
+    optional int32 vitcd = 5;        //体力时间
+    optional pb_bag reward = 6;  //显示奖励
+    optional int32 rt = 7;             //路线id
+    optional int32 num = 8;            //藏宝图次数
+}
+
+message pb_iboat
+{
+    optional string name = 1;       //名字
+    optional int32 exp = 2;         //经验
+    optional int32 arm = 3;         //耐久度
+    optional int32 spd = 4;         //速度
+    repeated int32 skls = 5;        //技能列表船舱，动力炉，装甲，兵器库
+}
+
+message pb_ipro
+{
+    optional int32 id = 1;     //生产道具的id
+    optional int32 num = 2;     //已经生成的次数
+    optional int32 cd = 3;     //剩余时间
+}
+
+message pb_identity
+{
+    optional int32 online_time  = 1; // 在线时长
+    optional int32 adult        = 2; // 0:未进行身份验证;1:是成年人(大于等于18岁算成年人);2:不是成年人
+    optional string locale      = 3; // 国家或地区
+    optional int32 age          = 4; // 玩家年龄
+    optional int32 mrecharge    = 5; // 玩家当月累计充值
+}
+
+message pb_sact
+{
+    repeated pb_sact_item acts = 1;       //圣诞活动(1,2,3类型sync数据)
+}
+
+message pb_ract
+{
+    repeated pb_ract_item acts = 1;
+    optional int32 show = 2;  // 0:不展示  1:展示
+}
+
+message pb_brave_box
+{
+    required int32 id = 1; //宝箱序号
+}
+
+message pb_brave_buff
+{
+    required int32 id = 1; //buff序号
+    required int32 num = 2; //buff数量
+}
+
+message pb_re_sync
+{
+    optional int32 role = 1;
+    optional int32 gift_id = 2;//连环助力礼包id
+    optional int32 back_gift = 3; //回归礼包id
+    optional int32 bind_times = 4; //回归玩家与活跃玩家绑定次数
+    optional int32 help_times = 5; //活跃玩家与回归玩家绑定次数
+    optional int32 back_cd = 6; //回归玩家cd（7天时间，超过7天给0）
+    optional int32 bind = 7; //是否绑定互助关系， 0：未绑定  1：绑定
+    repeated pb_re_task s_tasks = 8; // 单人任务 （只有回归玩家下发）
+    repeated pb_re_task h_tasks = 9; // 互助任务 （绑定玩家才下发）
+    optional int32 cd=10;//单人任务刷新cd, 每天刷新
+    optional int32 cd2=11;//互助任务cd（大约30天，未绑定为0）
+    repeated pb_re_apply applys = 12;
+    optional string code=13;//活跃玩家的绑定码
+    repeated pb_re_bind_player players = 14; // 历史互助者
+}
+
+// 老玩家回归活动，玩家申请绑定请求
+message pb_re_bind_player
+{
+    optional int32 logo =1;
+    optional int32 uid = 2;
+    optional string name = 3;
+    optional int32 bind = 4; // 0：未绑定 1：绑定
+}
+
+// 老玩家回归活动，玩家申请绑定请求
+message pb_re_apply
+{
+    required int32 logo =1;
+    optional int64 uid = 2;
+    optional string name = 3;
+    optional int32 cd = 4;
+}
+
+// 老玩家回归活动，互助任务、单人任务
+message pb_re_task
+{
+    required int32 id =1;
+    optional int32 num1 =2;// 我的进度
+    optional int32 num2 =3;// 对方进度
+}
+
+// 虚空之门buff,道具
+message pb_vbuff
+{
+    optional int32 id =1;
+    optional int32 type =2; // 1buff, 2水晶道具
+}
+
+// 时空丰碑同步数据
+message pb_stele
+{
+	optional int32 hook = 1; // 战役进度
+	optional int32 solo = 2; // 地牢进度
+	optional int32 crush = 3; // 时空进度
+	optional int32 tower = 4; // 塔进度
+	repeated int32 sealland = 5; // 封印之地进度
+        optional int32 st    = 6; // 时空状态, 0: 没有开放; 1: 已开放
+}
+
+//新点金手
+message pb_midas{
+  required int32 type = 1; //点金手类型
+  required int32 cd = 2; //该类型的cd
+  required int32 index =3; //该类型cd期间内已经点过几次
+}
+
+message pb_gve
+{
+    optional int32 id = 1; // 地图id
+    optional int32 exp = 2; // 地图exp
+    repeated int32 record = 3; // 地图对应boss已经打过的记录
+    optional int32 fight = 4; // boss挑战次数剩余
+}
+
+message pb_gve_rank
+{
+    optional int32 id = 1; // 地图id
+    optional string name = 2; // 玩家名字
+    optional int32 exp = 3; // 地图exp
+    optional int32 texp = 4; // 地图实际exp
+}
+
+message pb_act_block
+{
+    optional int32 pos = 1; // 位置 [12]
+    optional sint32 eventid = 2; // 事件id，-1 已标记、0 已触发、其他为表格配置的ID
+}
+
+message pb_act_maze
+{
+    optional int32 floor = 1; // 层数 藏宝图的话为进入藏宝图的层数
+    repeated pb_act_block events = 2; // 已经开启 [1,2]
+    optional int32 heroid = 3; // 英雄id
+    optional int32 skill = 4; // 技能点数
+    optional int32 skill_lv = 5; // 技能等级 其他发1 , 特殊英雄发相应等级
+    optional int32 change = 6; // 英雄已转换次数
+    optional int32 treasures = 7; // 藏宝图计数
+    optional int32 buff = 8; // 双倍buff数量，初始为0
+    optional int32 type = 9; // 地图类型 1 普通图 2 藏宝图
+	optional int32 pos = 10; //当前位置 藏宝图 无这条
+    optional int32 buy_num = 11; //已购买镐头数量
+    optional bool get_frag = 12; //在当前图中是否获得了藏宝图碎片，用于前端提示
+}
+
+message pb_ntask
+{
+  required int32 id = 1; // id
+  required int64 count = 2; // 计数进度
+  required int32 status = 3; // 状态
+  repeated pb_nextra extra = 4; // extra数据 [[hid],[hid],[hid]]
+}
+
+message pb_nextra
+{
+  repeated int32 id = 1; // id [hid]
+}
+
+message pb_nt_sync
+{
+  required sint32 type = 1; //类型
+  repeated int64 value = 2; //值
+}
+
+message pb_room
+{
+  optional int32 id = 1 ;// 建筑id
+  optional int32 pos = 2 ;// 建筑位置
+  optional int32 skinid = 3; // 皮肤id 默认值0
+  optional int32 hid = 4 ;// 房客hid 默认值nil
+}
+
+// 地皮信息
+message pb_home_land
+{
+  optional int32 land_id = 1 ;
+  optional string name = 2;
+  repeated pb_room rooms = 3;
+  optional int32 owner = 4;
+}
+
+// 地块操作信息
+message pb_block
+{
+  optional int32 type = 1; // 地块操作(类型)1 建造  2 移动  3拆除  4 开地
+  optional int32 from = 2; // 地块操作(位置),新建代表建筑id;
+  optional int32 to = 3; // 地块操作(位置),删除添加默认值0
+}
+
+// 进驻操作信息
+message pb_living
+{
+  optional int32 type = 1; // type入驻建筑类型，
+  optional int32 hid = 2; // hid入驻英雄hid, 不填代表下阵
+}
+
+message pb_buildings
+{
+  required int32 id = 1; //建筑id
+  required int32 pos = 2; // 位置
+  required int32 skinid = 3; //建筑皮肤
+  optional int32  collect_time = 4; //资源建筑已经产出的时间
+  optional int32  store = 5; // 资源建筑被存储的产出数量
+}
+message pb_home_roomer
+{
+  optional int32 room_id = 1; // 房客所在房间
+  optional int32 hid = 2;     // 房客hid
+  optional int32 skinid = 3;  // 皮肤id
+}
+message pb_home_heroes
+{
+  optional int32 hid = 1; // 房主hid
+  optional int32 land_id = 2; // 地皮id
+  repeated pb_home_roomer roomers = 3; // 房客列表
+}
+
+// 收藏馆信息
+message pb_coll
+{
+  optional int32 type = 1; // 1皮肤，2神器，3装备，4头像
+  optional int32 score = 2;
+  optional int32 lv = 3;
+}
+
+//炼金炉数据
+message pb_stove
+{
+  optional int32 id = 1; //正在熔炼的id
+  optional int32 num = 2; //正在熔炼的数量
+  optional int32 cd = 3; //剩余的时间
+  repeated pb_stove_buy buy = 4; //限购已经购买的次数
+}
+
+//炼金炉限购已经购买的次数
+message pb_stove_buy
+{
+  required int32 id = 1; //id
+  required int32 num = 2; //已经购买的次数
+}
+
+//gvm 符文结构
+message pb_gvm_stone
+{
+  optional int32 bid = 1; //唯一id
+  required int32 id = 2; //符文类型id
+  repeated int32 num = 3; //符文随机属性的值 [500, 100000]
+  optional int32 pos = 4; //当前装备的位置, 没有穿传undefeind
+}
+
+message pb_gvm_map
+{
+    required int32 id = 1; // 战区id
+    optional int32 buff_num = 3; // 地图buff数量
+}
+
+message pb_gvm_map_node
+{
+    required int32 id = 1; // 配置表中的节点id
+    required int32 state = 2; // 1 未死亡 2 已死亡 3不可打（精英怪初始化时不可打）
+    optional int32 cfg_id = 3; // boss、怪物表格id
+    repeated int32 hps = 4; // boss、怪物血量百分比列表
+}
+
+message pb_gvm_rank
+{
+    optional int32  gid = 1; // 公会id, 64 -> 32
+    optional int64  score = 2; // 积分
+    optional int32  time = 4; // 时间
+    optional int32  logo = 5; // 公会旗子
+    optional string  name = 6; // 公会名字
+    optional int32  member = 8; // 在线成员人数
+    optional int64  exp = 9; // 经验
+}
+
+// 匹配对手信息
+message pb_match
+{
+    required sint32 idx = 1; //1-10 位置索引, 防守记录积分
+    optional string name = 2; //名字 非自己使用
+    optional int64 uid = 3;  // 非自己使用
+    optional int32 lv = 6; // 非自己使用
+    optional int32 logo = 4; //非自己使用
+    optional int32 lbox = 5; //头像框
+    optional int32 win = 7; //0初始，1胜利，2失败
+    repeated pb_match_hero heroes = 8; // 阵容英雄相关数据 防守记录没有
+    optional int64 power = 9; //战力 防守记录时间
+}
+
+// 匹配对手单个英雄信息
+message pb_match_hero
+{
+    required int32 pos = 1; //站位， 英雄掠夺背包1-10
+    required int32 id = 2; //对应配置表中的id，用于客户端查询 头像等等资源
+    optional int32 lv = 3; //等级
+    optional int32 stl = 4; // 时空英雄技能等级
+    optional int32 flag = 5; //自定义  第一位 ： 竞技场中， 第二位 被锁定 第三位：3v3竞技场, 第四位 : 跨服竞技场 , 第五位 :世界竞技场, 第六位 : 房主 ,第七位 : 房客
+    repeated pb_equip equips = 6; //装备,
+    optional int32 wake = 7;// 觉醒次数
+    repeated int32 skill_id = 8; //赋能技能
+    optional pb_attr attr = 9; //属性
+    optional int32 skin = 10; // 皮肤
+    optional int32 qlv  = 11; // 资质
+    optional int32 tree_flag = 12; // 同pb_unit里面的flag, 后续还需扩展使用
+    optional int32 core = 13; // 同pb_unit里面的core
+    optional int32 times = 14[default = 0]; //剩余使用次数
+    optional int32 use = 15[default = 0]; // 0本轮未使用，1本轮已使用
+}
+
+// 星空角斗场结算数据
+message pb_pvp_accounts
+{
+    required int32 score = 1; //积分
+    required int32 win = 2; //胜场次数
+}
+
+// 属性
+message pb_attr
+{
+    optional int32 atk = 1; //总攻击
+    optional int32 hp = 2;  //总血量
+    optional int32 arm = 3; //护甲
+    optional int32 spd = 4; //速度
+    optional int32 sklP = 5; //技能伤害增加率
+    optional int32 hit = 6; //精准
+    optional int32 miss = 7; //格挡
+    optional int32 crit = 8; //暴击率
+    optional int32 critTime = 9; //暴击伤害
+    optional int32 brk = 10; //破甲
+    optional int32 free = 11; //免控率
+    optional int32 decDmg = 12; //减伤率
+    optional int32 trueAtk = 13; //神圣伤害
+}
+
+
+message pb_gvm_mbr
+{
+    optional string name = 1; //名字 非自己使用
+    optional int64 uid = 2;  // 非自己使用
+    optional int32 lv = 3; // 非自己使用
+    optional int32 logo = 4; //非自己使用
+    optional int32 lbox = 5; //头像框
+    repeated int64 scores = 6; //得分
+    optional int64 score = 7; //得分
+}
+
+
+//一键升星
+message pb_up_star
+{
+    required int32 id = 1; //主卡id
+    repeated int32 hid = 2; // 消耗的材料id
+}
+
+//功能开启关闭
+message pb_fun
+{
+    required int32 open = 1; //0为开启，1为关闭
+    required int32 cd = 2; // 倒计时
+} 
+
+message hland_change_skin{
+  required int32 skin = 1;
+  required int32 pos  = 2;
+}
+
+//家园个人记录
+message pb_hland_log
+{
+  optional string name = 1; //名字 非自己使用
+  optional int64 uid = 2;  // 非自己使用
+  optional int32 lv = 3; // 非自己使用
+  optional int32 logo = 4; //非自己使用
+  optional int32 lbox = 5; //头像框
+  optional int32 type = 6; //类型
+  optional int64 time = 7; //照料的时间
+}
+
+//家园成员
+message pb_hmbr
+{
+    optional string name = 1; //名字 非自己使用
+    optional int64 uid = 2;  // 非自己使用
+    optional int32 lv = 3; // 非自己使用
+    optional int32 logo = 4; //非自己使用
+    optional int32 lbox = 5; //头像框
+    repeated int32 item_ids = 6; //提供的印记道具id
+}
+
+//家园组队
+message pb_hteam
+{
+    optional string id = 1;    // 队伍id
+    optional int64 leader = 2; // 队长
+    optional int32 type = 3;   // 遗迹类型
+    repeated pb_hmbr mbr = 4;  // 队员信息
+    optional int32 cd = 5;     // 遗迹满5代表探险结束倒计时， 不满5代表队伍自动解散倒计时
+    optional bool shape = 6;   // 是否满员组队: true: 满5人组队成功； false: 未满员，没有组队成功
+    repeated int64 invites = 7; // 已邀请过的列表
+}
+
+//编队信息
+message pb_team_info
+{
+    required int32 id = 1; //队伍号
+    optional string name = 2; //名字
+    repeated pb_team_hero heroes = 3; // 英雄ID
+    optional int32 petid = 4; //魔兽
+    optional int32 flag = 5; // 只要有英雄槽位和装备槽位不一样，就传1，其余传0
+}
+
+//编队使用英雄
+message pb_team_hero
+{
+    required int32 pos = 1; //1-6
+    required int32 hid = 2; //英雄hid
+    repeated pb_equip equips = 3; //英雄装备
+    repeated int32 skill_id = 4; //英雄赋能技能
+    repeated pb_sattr sattrs = 5; //时空印痕 印痕3、7、11所选属性ID
+    optional int32    flag   = 6; // 第8位: 生命队长标记
+} 
+
+//交易系统英雄模块
+message good
+{
+    optional int32 good_id = 1;
+    optional int32 hero_id = 2;
+    optional pb_hero_qlc qlt = 3;
+    optional int64 price = 4; // 当前竞拍价 or 自己出
+    optional int64 del_price = 5;// 一口价
+  // 1展示期  2竞拍期 3竞拍且本人是最后一个出价  4 自己上架的商品(购买期, 无法进行出价) 5 自己的商品无人出价(购买期) 6 自己上架的商品(展示期, 可进行下架)
+  // 7自己竞拍过的  8竞拍收藏 9展示收藏
+    optional int32 state = 6;
+    //当为弹窗使用时 1 买成功 2 卖成功  3 买失败 4 卖失败
+    optional int32 cd = 7; //状态改变倒计时
+    optional int32 rprice = 8; //上架时参考价
+    optional pb_give_role seller = 9; //卖方
+    optional pb_give_role buyer = 10; //卖方
+}
+
+message mall_log
+{
+    optional int32 time = 1;
+    optional int32 heroid = 2;
+    optional pb_hero_qlc qlt = 3; //type 1,2,3 传 总资质
+    optional int32 price = 4;//星钻数量
+    optional int32 type = 5; //BUY_SUCCESS, 1SELL_SUCCESS, 2BUY_FALL, 3SELL_FALL, 4
+    optional int32 status = 6; // 1 已领 2 未领
+    optional int32 goodid = 7;
+    optional pb_give_role user = 8; //交易成功卖方或买方
+}
+
+// 通用位置映射
+message pb_kv
+{
+    optional int32 k = 1;
+    optional int32 v = 2;
+}
+
+// 通用位置映射
+message pb_kvs
+{
+    repeated int32 k = 1;
+    repeated int32 v = 2;
+    repeated int32 v2 = 3;
+}
+
+message pb_growup
+{
+  optional int32 id = 1;
+  optional int32 index = 2;
+  optional int32 claim = 3; // 1: 付费奖励1; 4: 付费奖励(自选); 8: 基础奖励; 
+}
+
+// 新周活动界面详细数据
+message pb_puzzle
+{
+    optional int32 id = 1;  //图层编号(配置表*id)
+    optional int32 next = 2;    //图案预告[下个图案编号(配置表*id)]
+    optional int32 cur = 3;    //图案背包[当前可使用的图案编号(配置表*id)]
+    repeated pb_kv pos = 4;    //图层信息[常规图层 or 奖励图层(map的values表示图形编号)]
+    repeated int32 bag = 5; //奖励图层背包[9个图形随机ID] 未变换的原始拼图id
+    optional int32 num = 6; //积分[获得积分/兑换物品 or 兑换存储积分]
+    optional int32 ring = 7;    //彩虹关环形进度
+    optional int32 siz = 8;    //本期已消耗积分[显示时(num + siz)总积分]
+}
+
+//赠与系统玩家的信息
+message pb_give_role
+{
+  required int64 uid64 = 1;//uid64
+  required string channel = 2; // 渠道
+  required int32 lv = 3; //等级
+  optional int32 lbox = 4; //头像框
+  required string name = 5; //名字
+  required int32 logo = 6; //头像
+}
+
+//接受到一个新订单
+message pb_give_order
+{
+  optional int64 id = 1; //订单id
+  optional uint32 type = 2; //订单的类型 1赠送，2被赠送
+  optional int32 num = 3; //订单的星钻数pb_give_role量
+  optional uint32 status = 4; //订单的状态
+  optional pb_give_role role = 5; //另一方的信息
+  optional int32 cd = 6; //订单结束的cd
+}
+
+//赠送日志
+message pb_give_log
+{
+  optional string name = 1; //玩家名字
+  optional int32 num = 2; //星钻数量
+  optional int32 tax = 3; //税
+  optional int64 time = 4; //交易成功的时间
+}
+
+
+// 资质pvp敌人信息
+message pb_qlt_pvp_enemy
+{
+  optional sint32  idx = 1; // 敌人位置
+  optional int32  logo = 2; // 头像
+  optional string  name = 3; // 玩家名
+  optional string  cluster = 4; // 渠道
+  optional int32  lv = 5; // 玩家等级
+  optional int32  lbox = 6; // 玩家等级
+  repeated pb_unit camp = 7; //1-30英雄 31-35魔兽
+  repeated sint32 skls = 8; //技能，不设置传0
+  repeated sint32 hide = 9; //隐藏的队伍ID，[1,2]
+  optional int64 uid = 10; //uid
+  optional int32 power = 11;//战力
+    optional int32 is_fight = 12;//是否战斗过
+  optional string gname = 13;//公会名
+}
+
+// 资质pvp记录结构
+message pb_qloger
+{
+    required int64 vid = 1;     //记录id
+    optional pb_smbr a_mbr = 2;   //我方信息
+    optional pb_smbr d_mbr = 3;   //敌方信息
+    optional int32 time = 4;    //时间
+    optional bool win = 5;      //本方输赢
+    optional sint32 delta = 6;   //分数
+    repeated sint32 a_skls = 7; //技能，不设置传0
+    repeated sint32 d_skls = 8; //技能，不设置传0
+}
+
+
+// 资质pvp对决录像结构
+message pb_qvideo
+{
+    repeated pb_unit atk = 1;	//攻击方
+    repeated pb_unit def = 2;	//防守方
+    repeated bytes frames = 3;	//录像数据
+    repeated pb_hurts hurts = 4;//伤害统计
+    required bool win = 5; 		//对于atk来
+}
+// 资质pvp对决所有信息
+message pb_qlog
+{
+    repeated pb_qvideo video = 1;	//5场录像
+    optional pb_smbr a_mbr = 2;   //进攻方信息
+    optional pb_smbr d_mbr = 3;   //防守方信息
+    optional int32 time=4;//时间戳
+    optional bool win = 5;      //输赢 win为进攻方,false为防守方
+    optional sint32 delta = 6;   //分数 进攻方获得分数
+    repeated sint32 a_skls = 7; //技能，不设置传0
+    repeated sint32 d_skls = 8; //技能，不设置传0
+
+}
+
+// 势力榜
+message power_rank {
+    optional uint32 id = 1; //势力ID
+    optional pb_give_role player = 2; //统领信息
+    optional int32 score = 3; // 势力积分、、是否被灭,、据点个数
+
+
+
+
+}
+
+//任务
+message power_task {
+    required uint32 id = 1; //任务唯一id
+    optional uint32 type = 2; //任务类型
+    optional int32 cd = 3; //任务倒计时
+    optional int32 num = 4; //任务进度
+    optional uint32 dot_id = 5; //据点id, 部分任务需要
+    optional uint32 flag = 6; //已领奖1 未领奖0
+}
+
+//据点
+message dot_info {
+    optional uint32 id = 1; //据点ID
+    optional uint32 power_id = 2; //所属势力ID
+    optional int32 degree = 3; //据点耐久度
+    optional int32 max = 4; //最大耐久度
+    optional uint32 status = 5; //0初始，1被打，2争夺
+    optional int32 item = 6; //使用道具次数
+    repeated pb_item buff = 7; //道具buff
+    optional int32 tmp_id = 8; //据点使用模板ID
+    repeated int32 skill = 9; //技能id
+    optional int32 cd = 10; //据点易主后恢复耐久cd
+    optional int32 cd2 = 11; //争夺状态再触发cd(测试用)
+    optional int32 cd3 = 12; //据点资源cd
+    optional int32 cd4 = 13; //争夺状态结束cd
+    optional int32 cd5 = 14; //据点模版应用cd
+}
+
+//据点日志
+message dot_log {
+    optional uint32 type = 1; //日志类型 1、当前耐久度，2使用道具增加耐久度
+    optional int32 degree = 2; //当前耐久度
+    optional string time = 3; // 时间字符串
+    optional int32 id = 4; //道具类型
+    optional int32 add = 5; //增加的耐久度，正增加，负减少增加的耐久度，正增加，负减少
+}
+//怪物巢穴
+message power_monster {
+    required int32 id = 1; //怪物id
+    repeated pb_unit camp=2;//最高难度通关阵容
+    repeated int32 buff=3;//最高难度通关词缀
+}
+//科技模板
+message power_skill {
+    required int32 id = 1; //模板id
+    optional string name = 2; //名字
+    repeated int32 skill = 3; //技能id
+    optional int32 cd = 4; //模版修改cd
+}
+//任命玩家信息
+message power_manager {
+    optional string udk = 1;  //被任命玩家udk
+    optional string cluster = 2;  //被任命玩家渠道
+    optional int64 uid = 3;  //被任命玩家uid
+}

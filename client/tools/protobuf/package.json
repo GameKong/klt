@@ -1,0 +1,13 @@
+{
+  "name": "proto2js",
+  "version": "1.0.0",
+  "description": "proto file transform to js and ts",
+  "scripts": {
+    "build-proto": "npm run build-proto-for-ts:pbjs && npm run build-proto:pbts && npm run build-proto:pbjs",
+    "build-proto-for-ts:pbjs": "pbjs --dependency protobufjs/minimal.js --target static-module --wrap commonjs --out ./tmp/pb_logic.js ./pb_logic.proto --no-delimited --no-verify --no-convert --no-beautify",
+    "build-proto:pbts": "pbts --main --out ./tmp/pb_logic.d.ts ./tmp/pb_logic.js --no-comments && node ./wrap/wrap-pb-logic.js",
+    "build-proto:pbjs": "pbjs --dependency protobufjs/minimal.js --target static-module --wrap commonjs --out ./tmp/pb_logic.js ./pb_logic.proto --no-delimited --no-verify --no-convert --no-beautify --no-comments"
+  },
+  "author": "kongl",
+  "license": "ISC"
+}

@@ -1,0 +1,65 @@
+import { _decorator, Component, Node, SpriteAtlas } from 'cc';
+const { ccclass, property } = _decorator;
+import { LoadList } from '../../core/resManager';
+import { BaseUI } from '../baseUI';
+
+/**
+ * 
+ * <%CamelCaseClassName%>
+ * <%Author%>
+ * <%DateTime%>
+ * <%FileBasename%>
+ * <%URL%>
+ *
+ */
+
+@ccclass('<%CamelCaseClassName%>')
+export class <% CamelCaseClassName %> extends BaseUI {
+    event_list = [
+        {
+            event: "xx", object: this, listener: (event: string, args: any) => {
+
+            }
+        }
+    ];
+
+    load_list = [
+        {
+            bundle_name: "xx",
+            res_list: new Map([
+                [SpriteAtlas, [
+                    "xxx",
+                    "xxxx"
+                ]]
+            ])
+        }
+    ];
+
+    onLoad() {
+        super.onLoad();
+    }
+
+    start() {
+        super.start();
+    }
+
+    update(dt: number) {
+        super.update(dt);
+    }
+
+    lateUpdate(dt: number) {
+        super.lateUpdate(dt);
+    }
+
+    onEnable() {
+        super.onEnable();
+    }
+
+    onDisable() {
+        super.onDisable();
+    }
+
+    onDestroy() {
+        super.onDestroy();
+    }
+}

@@ -1,0 +1,55 @@
+
+ui_main_jjc.png
+size: 232,265
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/glow
+  rotate: false
+  xy: 181, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ui_common/particle_circle2
+  rotate: false
+  xy: 181, 53
+  size: 48, 48
+  orig: 50, 50
+  offset: 1, 1
+  index: -1
+ui_main_zhuchangjing/zcj_jjc1
+  rotate: false
+  xy: 1, 1
+  size: 178, 148
+  orig: 180, 150
+  offset: 1, 1
+  index: -1
+ui_main_zhuchangjing/zcj_jjc1_2
+  rotate: false
+  xy: 132, 151
+  size: 98, 71
+  orig: 104, 74
+  offset: 3, 2
+  index: -1
+ui_main_zhuchangjing/zcj_jjc1_qz1
+  rotate: false
+  xy: 156, 224
+  size: 14, 34
+  orig: 16, 36
+  offset: 1, 1
+  index: -1
+ui_main_zhuchangjing/zcj_jjc1_qz2
+  rotate: false
+  xy: 132, 224
+  size: 22, 34
+  orig: 24, 36
+  offset: 1, 1
+  index: -1
+ui_main_zhuchangjing/zcj_jjc2
+  rotate: true
+  xy: 1, 151
+  size: 113, 129
+  orig: 116, 132
+  offset: 1, 2
+  index: -1

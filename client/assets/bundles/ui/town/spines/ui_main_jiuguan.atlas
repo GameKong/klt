@@ -1,0 +1,34 @@
+
+ui_main_jiuguan.png
+size: 518,119
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/t_smoke_3
+  rotate: false
+  xy: 211, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_jiuguan
+  rotate: true
+  xy: 466, 1
+  size: 73, 51
+  orig: 76, 54
+  offset: 1, 2
+  index: -1
+ui_main_zhuchangjing/zcj_jiuguan3
+  rotate: false
+  xy: 313, 1
+  size: 151, 92
+  orig: 154, 96
+  offset: 1, 2
+  index: -1
+ui_main_zhuchangjing/zcj_jiuguan_2
+  rotate: false
+  xy: 1, 1
+  size: 208, 117
+  orig: 212, 122
+  offset: 2, 3
+  index: -1

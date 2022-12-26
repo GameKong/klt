@@ -1,0 +1,62 @@
+
+ui_main_auction.png
+size: 212,243
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/glow
+  rotate: false
+  xy: 161, 189
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ui_common/light
+  rotate: false
+  xy: 1, 159
+  size: 83, 83
+  orig: 85, 85
+  offset: 1, 1
+  index: -1
+ui_common/line3
+  rotate: false
+  xy: 167, 1
+  size: 20, 186
+  orig: 20, 188
+  offset: 0, 0
+  index: -1
+ui_common/star
+  rotate: false
+  xy: 86, 159
+  size: 73, 71
+  orig: 75, 76
+  offset: 0, 4
+  index: -1
+ui_main_zhuchangjing/baoshi01_00000
+  rotate: true
+  xy: 189, 1
+  size: 27, 21
+  orig: 27, 21
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/baoshi02_00000
+  rotate: true
+  xy: 189, 30
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/paimaihang
+  rotate: false
+  xy: 1, 1
+  size: 164, 156
+  orig: 164, 156
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zise
+  rotate: true
+  xy: 189, 55
+  size: 12, 17
+  orig: 12, 17
+  offset: 0, 0
+  index: -1

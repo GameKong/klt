@@ -1,0 +1,62 @@
+
+ui_main_yun.png
+size: 1214,231
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_main_zhuchangjing/yun1
+  rotate: false
+  xy: 1, 173
+  size: 248, 50
+  orig: 248, 50
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun2
+  rotate: false
+  xy: 532, 117
+  size: 402, 98
+  orig: 402, 98
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun3
+  rotate: false
+  xy: 1033, 1
+  size: 180, 102
+  orig: 180, 102
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun4
+  rotate: false
+  xy: 499, 1
+  size: 532, 114
+  orig: 532, 114
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun_mask_1
+  rotate: false
+  xy: 1, 1
+  size: 496, 170
+  orig: 496, 170
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun_mask_3
+  rotate: false
+  xy: 251, 173
+  size: 166, 54
+  orig: 166, 54
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun_mask_4
+  rotate: false
+  xy: 419, 173
+  size: 111, 41
+  orig: 111, 41
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/yun_mask_6
+  rotate: false
+  xy: 936, 117
+  size: 256, 113
+  orig: 256, 113
+  offset: 0, 0
+  index: -1

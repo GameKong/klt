@@ -1,0 +1,429 @@
+//  @version 1.0
+import "pb_comm.proto";
+
+// type:1   c2s s2c
+message pbreq_heartbeat
+{
+    required int32 echo2s = 1;
+}
+
+message pbrsp_heartbeat
+{
+    required int32 echo2c = 1;
+}
+
+// type:2   c2s
+message pbreq_hellow
+{
+    required int32 hellows = 1;
+}
+
+message pbrsp_hellow
+{
+    required int32 hellowc = 1;
+}
+
+// type:3   s2c
+message pbrsp_hi
+{
+    required int32 hic = 1;
+}
+
+
+
+
+
+
+//group  : 3  cmd: 1 after auth
+message pbreq_auth
+{
+    required string session = 1;
+    optional int32  uid = 2;    // 登陆服返回的uid
+    optional string env = 3;  // 基础环境信息(json格式)
+    optional string ids = 4;  // 各种id信息(json格式)
+    optional int32 support_zip = 5;  //是否支持协议压缩(0 or 1)
+}
+
+message pbrsp_auth
+{
+  required sint32 status = 1; // -2: 维护中 ; -3: 非法的uid
+  optional string createTs = 2;    // 只对渠道uc有效
+}
+
+//group  : 3  cmd: 2  zip = 1 暂时不要zip
+message pbreq_sync
+{
+    optional string idfa = 1; //设备标示，目前仅用于ios 上传值为idfa
+    optional string keychain = 2;
+    optional string idfv = 3;
+}
+
+//g : 3  c: 30    销毁账号
+message pbreq_trash
+{
+  required string pwd = 1;  //密码
+}
+
+message pbrsp_trash
+{
+  required sint32 status = 1;
+  optional uint32 flag = 2;   //账号状态(0正常状态, 1销毁倒计时 2已销毁)
+  optional uint32 cd = 3;     //账号销毁剩余秒数
+}
+
+//g : 3  c: 31    取消销毁
+message pbreq_resume
+{
+}
+
+message pbrsp_resume
+{
+  required sint32 status = 1;
+}
+
+//*******红点标志位*******//
+//第1位：远征红点 ;
+//第2位： 单挑赛红点
+//第3位：公会锦标赛
+//第4位：星空pvp
+//第5位:：工会战
+//第6位： 封印之地
+//第7位：酒馆任务;
+//第8位：世界竞技场每日任务
+//第9位：时空建筑红点
+//第10位：公会驻地红点
+//第11位：好友切切磋
+//第12位：虚妄之塔红点
+//第13位：祈火红点
+//第14位：船队冒险红点
+//第15位：星域探索(gvm)
+//第16位：编队红点
+//第17位：家园任务
+//第18位: mall商品竞拍成功
+//第19位: mall商品出售成功
+//第20位: mall商品竞价失败
+//第21位: mall商品流拍
+//************************//
+message pbrsp_sync
+{
+    required sint32    status = 1;
+    optional pb_player player = 2;
+    optional pb_bag    bag = 3;
+    repeated pb_hero   heroes = 4;
+    optional pb_gacha  gacha = 5;
+    repeated int32     hero_ids = 6 ; //图鉴英雄列表
+    repeated pb_mail   mails = 7; //同步邮件
+    optional int32     midas_cd = 8; // midas cd金币时间，0：能点，非0：倒计时
+    optional pb_hook   hook = 9 ; // hook的信息
+    optional int32     midas_crstcd = 10; // 点星任务倒计时cd
+    repeated int32     pay_num = 11;      //store表中每样物品购买的次数
+    optional int32     tutorial = 12; // 新手引导bit状态位
+    optional pb_friend friends = 13; //好友信息
+    optional pb_strial trial = 14;
+    optional pb_alogin  alogin = 15; // 累计登陆
+    repeated pb_act  acts = 16;
+    optional pb_sachieve achieve = 17;
+    repeated pb_task tasks = 18;        //每日任务状态
+    optional int32      task_cd = 19;   //每日任务刷新倒计时
+    optional pb_online  online = 20;    //在线奖励
+    optional int32     midas_flag = 21;  //3种点金状态 第一位 ：type 1  第二位 : type 2 第三位 type 3
+    optional int32     web_flag = 22;  // 1: 第一关过关, 2: 第二关过关[过关意为奖励已发放]
+    optional int32     video_ad = 23; // 1: 每日任务在当天没有竞技场可打的时候自动完成，前端替换任务8文本
+    repeated pb_act  limitacts = 24;
+    optional pb_htask_sync htask = 26;
+    optional int32     buy_hlimit = 27; //英雄携带上限，购买次数
+    optional int32     space_gacha = 28; //时空召唤 1~15的循环
+    repeated pb_cd     cds = 29;  // vip重置倒计时,id为0，cd为剩余多少秒
+    optional int32     final_rank = 30; // 水晶皇冠联赛当前第几赛季
+    optional bool      hide_vip = 31; // true : hide
+    optional int32     tutorial2 = 32;    //新 新手引导
+    repeated pb_pet    pets = 33; // 宠物列表
+    optional int32     reddot = 34; // 红点详情见上
+    repeated pb_gskl   gskls = 35;  //公会科技技能
+    optional int32     subscribed = 36;   //1：已订阅；0：未订阅
+    repeated pb_item   skin = 37;   //皮肤
+    optional int32     gsklcode = 38; // 公会科技阵营重置bit状态位
+    optional int32     chatblocks = 39; // 聊天屏蔽，1:世界聊天；2:公会聊天；4:招募信息
+    optional pb_identity identity = 40; // 实名认证, 已废弃
+    optional pb_mact    mact = 41; // 月活动
+    optional int32        audit = 42;    // 实名认证[0:成年 1:游客 2:0-8岁 3:8-16岁 4:16-18岁 5:认证中 6:异常认证中]
+    optional pb_sact    sact = 43;        //特殊活动数据
+    optional int32        off_card = 44; // 0:没有买过月卡折扣；1:买过大月卡折扣;2:买过小月卡折扣; 3:买过大小月卡折扣
+    optional int32        video_cd = 45;// 1: 有遗迹建筑;0: 没有遗迹建筑
+    optional pb_ract    ract = 46;        //新手挑战活动数据
+    optional int32        use_hitem = 47;        //使用扩展背包道具的次数
+    optional pb_re_sync re_sync = 48;        //老玩家回归角色 1 :回归 2：非回归 3：啥都不是
+    repeated pb_midas new_midas = 49; //新点金手数据 {类型, cd, 已经点过几次}
+    optional pb_stele stele = 50;        // 时空丰碑数据
+    optional string    token = 51;    //社区验证token
+    optional int32 stower_lv = 52; //星塔等级
+    repeated int32 spet_ids = 53; //星灵idid
+    repeated int32  skin_ids = 54 ; //图鉴英雄列表
+    repeated pb_home_heroes  home_heroes = 55 ; // 家园房主列表
+    repeated int32 coll_lv = 56; //收藏馆等级 0皮肤，1神器，2装备，3头像
+    repeated int64 like = 57; //家园点赞列表
+    repeated int64 care = 58; //照料列表
+    repeated int32 hteam_bag = 59; // 家园组队印记背包, 索引是印记id,从1开始。 值是数量,没有为0。
+    repeated pb_task qlt_tasks = 60; // 点星任务列表
+    repeated pb_give_order give = 61;// 星钻赠送订单
+    optional int32 qscore = 62; // 点星任务分数
+    optional sint32 mall_pwd = 63; //交易密码 0未设置密码，1已设置密码
+    optional sint32 qlt_pvp_market = 64; //异域星岛商店，1开启
+}
+
+// group : 3, cmd : 3
+message pbreq_up
+{
+    required string vsn = 1;
+    optional string packagename = 2;  //游戏包名
+}
+
+message pbrsp_up
+{
+    required int32 status = 1;
+    required string vsn = 2;
+    required int32  lv = 3; // 0: 更新无需重启，1 ： 更新必须重启，2: 去appstore下载
+    optional string prefix = 4;      // 主热更地址
+    repeated pb_upfile files = 5;    // 已启用很久
+    optional string upList = 6;         // file md5
+    optional int32 thcount = 7;      // 下载线程数量
+    optional string appurl = 8;      // 跳转到哪里去下载
+    repeated string upurl = 9;      // 备用热更地址(列表)
+}
+
+// g : 3, cmd : 4
+message pbreq_bind
+{
+    required string account = 1;
+    required string password = 2;
+}
+
+message pbrsp_bind
+{
+    required sint32 status = 1;  // 账户已经被绑定 : -1，账户名已经被用 : -2
+}
+
+// g : 3, cmd : 5
+message pbreq_change_password
+{
+    required string old = 1;
+    required string new = 2;
+}
+
+message pbrsp_change_password
+{
+    required sint32 status = 1;
+}
+
+// g : 3, cmd : 6
+message pbreq_servers
+{
+}
+
+message pbrsp_servers
+{
+    repeated pb_server servers = 1;
+    optional int32 mid = 2; // 主uid
+}
+
+// g : 3, cmd : 7
+message pbreq_player
+{
+    required int64 uid = 1;             // 玩家uid, new, 32 -> 64
+    optional int32 kind = 2;          // 1: 普通竞技场；其他：没有
+}
+
+message pbrsp_player
+{
+    optional int32 gid = 1;             // 玩家公会id
+    optional string gname = 2;          // 玩家公会名字
+    repeated pb_unit heroes = 3;        // 玩家的防守阵容
+    optional int32 power = 4;           // 玩家防守阵容战斗力
+    optional int32 report = 5;          // 1:已经举报过该玩家，null或0:没举报过
+}
+// g : 3, c : 8
+message pbreq_change_name
+{
+    required string name = 1;
+}
+
+message pbrsp_change_name
+{
+    required sint32 status = 1;
+}
+
+// g : 13, c : 50  gvm 装备符文
+message pbreq_gvm_up_stone
+{
+    repeated int32 stone = 1;
+}
+
+message pbrsp_gvm_up_stone
+{
+    required sint32 status = 1;
+}
+
+// g : 13, c : 51  gvm 出售符文
+message pbreq_gvm_sell_stone
+{
+    repeated int32 stone = 1;
+}
+
+message pbrsp_gvm_sell_stone
+{
+    required sint32 status = 1;
+}
+
+
+// g : 13, c : 52 gvm 选择拉平英雄
+message pbreq_gvm_up_hero
+{
+    repeated int32 hids = 1;
+}
+
+message pbrsp_gvm_up_hero
+{
+    required sint32 status = 1;
+}
+
+// g : 13, c : 53  gvm 排行
+message pbreq_gvm_rank
+{
+    optional int32 type = 1; //1 工会玩家排行 2 工会排行
+}
+
+message pbrsp_gvm_rank
+{
+    required sint32 status = 1;
+    repeated pb_gvm_rank guds = 2;
+    repeated pb_gvm_mbr mbrs = 3;
+    optional int32 rank_self = 4;  //仅发工会排行使用
+    optional int64 score_self = 5; //仅发工会排行使用
+
+}
+
+// g : 13, c : 54  gvm 重置当前战区
+message pbreq_gvm_reset_map
+{
+
+}
+
+message pbrsp_gvm_reset_map
+{
+    required sint32 status = 1;
+    repeated pb_gvm_map_node nodes = 2;
+}
+
+// g : 14  c : 1
+message pbreq_trial
+{
+}
+
+message pbrsp_trial
+{
+    required sint32 status = 1;
+    required int32 id = 2;  //该打哪一关
+    required int32 tl = 3;  //体力
+    required int32 cd = 4; //增加体力倒计时
+}
+
+// g : 14  c : 2
+message pbreq_trial_rank
+{
+
+}
+
+message pbrsp_trial_rank
+{
+    repeated pb_trial rank = 1;
+}
+
+// g : 14  c : 3
+message pbreq_trial_fight
+{
+    repeated pb_unit camp = 1;
+    optional int32 tid = 2; //传则使用编队
+}
+
+message pbrsp_trial_fight
+{
+    required sint32 status = 1;
+    optional pb_evideo video = 2;
+}
+
+// g : 14 c : 4
+message pbreq_trial_video
+{
+}
+message pbrsp_trial_video
+{
+    required sint32 status = 1;
+    repeated pb_trial videos = 2;
+}
+
+message pbreq_trial_tl
+{
+    required int32 num = 1; //购买体力的数量
+}
+
+message pbrsp_trial_tl
+{
+    required sint32 status = 2;
+}
+
+// g:14 c:6 虚妄之塔挑战
+message pbreq_dream_fight
+{
+    required int32 id = 1; //层id
+    repeated pb_unit camp = 2; //阵容
+    optional int32 tid = 3; //传则使用编队
+}
+
+message pbrsp_dream_fight
+{
+    required sint32 status = 1;
+    optional pb_evideo video = 2;
+}
+
+// g:14 c:7 虚妄之塔排行榜
+message pbreq_dream_rank
+{
+
+}
+
+message pbrsp_dream_rank
+{
+    required sint32 status = 1;
+    repeated pb_trial rank = 2;
+}
+
+// g:14 c:9 虚妄之塔选择困难度
+message pbreq_dream_diff
+{
+    required int32 diff = 1; //1 ~
+}
+
+message pbrsp_dream_diff
+{
+    required sint32 status = 1;
+    repeated int32 monsters = 3; //[1,2,]
+    repeated pb_kv  bufs = 4;    // 总长度: 15, 每3个对应一个挑战层的buf
+}
+
+// g:14 c:10 虚妄之塔领取包裹奖励
+message pbreq_dream_reward
+{
+
+}
+
+message pbrsp_dream_reward
+{
+    required sint32 status = 1;
+    optional pb_bag reward = 2;
+}
+
+// g:14 c:11 虚妄之塔购买体力
+message pbreq_dream_buy
+{
+    required int32 num = 1; //购买体力的数量
+}

@@ -1,0 +1,279 @@
+
+ui_main_zhanyi.png
+size: 1011,782
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/glow
+  rotate: false
+  xy: 774, 686
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+ui_common/particle_circle2
+  rotate: false
+  xy: 787, 632
+  size: 48, 48
+  orig: 50, 50
+  offset: 1, 1
+  index: -1
+ui_common/t_line4
+  rotate: false
+  xy: 633, 164
+  size: 14, 200
+  orig: 14, 200
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/head_01
+  rotate: true
+  xy: 790, 498
+  size: 132, 154
+  orig: 132, 154
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/head_02
+  rotate: true
+  xy: 559, 367
+  size: 110, 102
+  orig: 110, 102
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/head_corner_02
+  rotate: false
+  xy: 946, 585
+  size: 63, 36
+  orig: 63, 36
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_arm
+  rotate: true
+  xy: 952, 481
+  size: 68, 55
+  orig: 68, 55
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_finger_01
+  rotate: true
+  xy: 946, 551
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_finger_02
+  rotate: true
+  xy: 559, 1
+  size: 44, 84
+  orig: 44, 84
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_head_corner_04
+  rotate: false
+  xy: 650, 592
+  size: 67, 170
+  orig: 67, 170
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_head_corner_05
+  rotate: true
+  xy: 968, 145
+  size: 45, 37
+  orig: 45, 37
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/l_shoulder
+  rotate: true
+  xy: 880, 244
+  size: 76, 77
+  orig: 76, 77
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/mouth_01
+  rotate: true
+  xy: 719, 592
+  size: 92, 66
+  orig: 92, 66
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/mouth_04
+  rotate: false
+  xy: 880, 161
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_arm
+  rotate: false
+  xy: 559, 47
+  size: 83, 115
+  orig: 83, 115
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_finger_01
+  rotate: false
+  xy: 719, 686
+  size: 53, 92
+  orig: 53, 92
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_finger_02
+  rotate: false
+  xy: 968, 1
+  size: 41, 70
+  orig: 41, 70
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_finger_013
+  rotate: true
+  xy: 559, 277
+  size: 32, 71
+  orig: 32, 71
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_head_corner_01
+  rotate: true
+  xy: 968, 73
+  size: 70, 37
+  orig: 71, 37
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_head_corner_03
+  rotate: false
+  xy: 1, 595
+  size: 152, 186
+  orig: 152, 186
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/r_shoulder
+  rotate: true
+  xy: 435, 595
+  size: 173, 113
+  orig: 173, 113
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/tail_02
+  rotate: false
+  xy: 633, 481
+  size: 155, 109
+  orig: 155, 109
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/ying
+  rotate: true
+  xy: 957, 328
+  size: 151, 53
+  orig: 151, 53
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi
+  rotate: false
+  xy: 559, 481
+  size: 72, 111
+  orig: 80, 116
+  offset: 4, 3
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi4
+  rotate: false
+  xy: 663, 367
+  size: 139, 106
+  orig: 139, 106
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi4_2
+  rotate: true
+  xy: 155, 595
+  size: 184, 125
+  orig: 184, 125
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi6
+  rotate: false
+  xy: 650, 1
+  size: 316, 158
+  orig: 316, 158
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi6_2_00
+  rotate: false
+  xy: 826, 682
+  size: 96, 98
+  orig: 100, 100
+  offset: 2, 1
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_2
+  rotate: false
+  xy: 559, 164
+  size: 72, 111
+  orig: 80, 116
+  offset: 4, 3
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_3
+  rotate: false
+  xy: 880, 322
+  size: 75, 67
+  orig: 76, 70
+  offset: 0, 1
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_shan
+  rotate: false
+  xy: 1, 1
+  size: 556, 592
+  orig: 556, 592
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree1
+  rotate: true
+  xy: 282, 595
+  size: 183, 151
+  orig: 183, 151
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree2
+  rotate: false
+  xy: 650, 161
+  size: 228, 204
+  orig: 228, 204
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree2_1
+  rotate: true
+  xy: 946, 623
+  size: 153, 60
+  orig: 153, 60
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree2_2
+  rotate: true
+  xy: 964, 192
+  size: 134, 45
+  orig: 134, 45
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree2_moon1
+  rotate: true
+  xy: 559, 311
+  size: 24, 69
+  orig: 24, 69
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree2_moon2
+  rotate: true
+  xy: 804, 367
+  size: 18, 60
+  orig: 18, 60
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree4
+  rotate: false
+  xy: 804, 391
+  size: 146, 105
+  orig: 146, 105
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_zhanyi_tree5
+  rotate: true
+  xy: 550, 595
+  size: 172, 98
+  orig: 172, 98
+  offset: 0, 0
+  index: -1

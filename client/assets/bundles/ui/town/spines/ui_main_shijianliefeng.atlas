@@ -1,0 +1,244 @@
+
+ui_main_shijianliefeng.png
+size: 1003,510
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_common/n_halo
+  rotate: false
+  xy: 1, 1
+  size: 340, 340
+  orig: 340, 340
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/3
+  rotate: false
+  xy: 902, 409
+  size: 65, 66
+  orig: 68, 68
+  offset: 2, 1
+  index: -1
+ui_main_zhuchangjing/sphere_fx_00
+  rotate: false
+  xy: 188, 343
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_02
+  rotate: false
+  xy: 290, 343
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_04
+  rotate: false
+  xy: 343, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_06
+  rotate: false
+  xy: 343, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_08
+  rotate: false
+  xy: 343, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_10
+  rotate: false
+  xy: 392, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_12
+  rotate: false
+  xy: 392, 409
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_14
+  rotate: false
+  xy: 445, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_16
+  rotate: false
+  xy: 445, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_18
+  rotate: false
+  xy: 445, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_20
+  rotate: false
+  xy: 494, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_22
+  rotate: false
+  xy: 494, 409
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_24
+  rotate: false
+  xy: 547, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_26
+  rotate: false
+  xy: 547, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_28
+  rotate: false
+  xy: 547, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_30
+  rotate: false
+  xy: 596, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_32
+  rotate: false
+  xy: 596, 409
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_34
+  rotate: false
+  xy: 649, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_36
+  rotate: false
+  xy: 649, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_38
+  rotate: false
+  xy: 649, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_40
+  rotate: false
+  xy: 698, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_42
+  rotate: false
+  xy: 698, 409
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_44
+  rotate: false
+  xy: 800, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_46
+  rotate: false
+  xy: 902, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_48
+  rotate: false
+  xy: 751, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_50
+  rotate: false
+  xy: 751, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_52
+  rotate: false
+  xy: 853, 103
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_54
+  rotate: false
+  xy: 853, 205
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_56
+  rotate: false
+  xy: 800, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_58
+  rotate: false
+  xy: 800, 409
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/sphere_fx_60
+  rotate: false
+  xy: 902, 307
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ui_main_zhuchangjing/zcj_fengyinzhidi
+  rotate: true
+  xy: 1, 343
+  size: 161, 185
+  orig: 161, 185
+  offset: 0, 0
+  index: -1

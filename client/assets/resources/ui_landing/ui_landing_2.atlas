@@ -1,0 +1,48 @@
+
+ui_landing_2.png
+size: 482,1133
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ui_landing/bg
+  rotate: true
+  xy: 1, 1
+  size: 720, 480
+  orig: 720, 480
+  offset: 0, 0
+  index: -1
+ui_landing/chongnv
+  rotate: false
+  xy: 229, 980
+  size: 100, 135
+  orig: 100, 135
+  offset: 0, 0
+  index: -1
+ui_landing/shi27
+  rotate: false
+  xy: 439, 791
+  size: 29, 44
+  orig: 29, 44
+  offset: 0, 0
+  index: -1
+ui_landing/shi28
+  rotate: false
+  xy: 439, 723
+  size: 29, 66
+  orig: 29, 67
+  offset: 0, 1
+  index: -1
+ui_landing/yan1
+  rotate: false
+  xy: 229, 723
+  size: 208, 255
+  orig: 212, 256
+  offset: 0, 0
+  index: -1
+ui_landing/yan2
+  rotate: true
+  xy: 1, 723
+  size: 409, 226
+  orig: 416, 226
+  offset: 7, 0
+  index: -1
