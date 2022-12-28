@@ -1,7 +1,8 @@
 import { _decorator } from 'cc';
-import { dh } from '../../../../scripts/dh';
-import { BaseUI } from '../../../../scripts/gui/baseUI';
-import { UIID } from '../../../../scripts/gui/uiDefines';
+import { dh } from '../../dh';
+import { BaseUI } from '../../gui/baseUI';
+import { UIID } from '../../gui/uiDefines';
+
 const { ccclass, property } = _decorator;
 
 /**

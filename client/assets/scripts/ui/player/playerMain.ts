@@ -1,7 +1,7 @@
 import { _decorator, SpriteAtlas, Sprite } from 'cc';
-import { LoadList } from '../../../../scripts/core/resManager';
-import { dh } from '../../../../scripts/dh';
-import { BaseUI } from '../../../../scripts/gui/baseUI';
+import { LoadList } from '../../core/resManager';
+import { dh } from '../../dh';
+import { BaseUI } from '../../gui/baseUI';
 const { ccclass, property } = _decorator;
 
 /**

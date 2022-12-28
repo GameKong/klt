@@ -1,4 +1,4 @@
-import { Asset, AssetManager, assetManager, Constructor, error, Prefab, SpriteAtlas, warn, __private } from "cc";
+import { Asset, AssetManager, assetManager, Constructor, director, error, Prefab, SpriteAtlas, warn, __private } from "cc";
 import { dh } from "../dh";
 import { BaseManager } from "./baseManager";
 import { EventType } from "./eventManager";
@@ -49,6 +49,11 @@ export class ResManager extends BaseManager {
     /**加载基础资源 */
     async loadBaseRes() {
         await this.loadResLists(white_res, this.progressCallBack());
+    }
+
+    /**加载基础资源 */
+    async loadMainScene() {
+        await director.loadScene("main");
     }
 
     /**

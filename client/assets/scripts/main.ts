@@ -6,6 +6,7 @@ import { NetManager } from "./core/netManager";
 import LOGIC from "./net/protocol/pb_logic";
 import { UIManager } from './core/uiManager';
 import { UIHelper } from './tools/uiHelper';
+import { UIID } from './gui/uiDefines';
 
 const { ccclass, property } = _decorator;
 
@@ -20,6 +21,7 @@ export class main extends Component {
 
     async start() {
         await this.initManager()
+        dh.uiManager.open(UIID.MainUI)
         
         // this.test01();
         // this.testSpine();

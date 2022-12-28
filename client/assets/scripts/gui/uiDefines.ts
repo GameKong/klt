@@ -58,8 +58,8 @@ export enum LayerType {
 
 /** 界面唯一标识id */
 export enum UIID {
-    /** 主城界面 */
-    Town = 1,
+    /** 主界面 */
+    MainUI = 1,
     /** 玩家信息界面 */
     Player = 2,
 }
@@ -126,6 +126,6 @@ export class UIConfig {
 
 /** 打开界面方式的配置数据 */
 export let UIConfigData: { [key: number]: UIConfig } = {
-    [UIID.Town]: new UIConfig({ ui_id: UIID.Town, bundle_name: "town", prefab_path: "townMain", dark_bg: false, main: true }),
+    [UIID.MainUI]: new UIConfig({ ui_id: UIID.MainUI, bundle_name: "mainUI", prefab_path: "mainUI", dark_bg: false, main: true }),
     [UIID.Player]: new UIConfig({ ui_id: UIID.Player, prefab_path: "playerMain", bundle_name: "player", ui_action: UIAction.ScaleIn }),
 }
