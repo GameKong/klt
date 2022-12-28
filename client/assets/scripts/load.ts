@@ -1,4 +1,13 @@
-import { _decorator, Component, screen, Node, director, ProgressBar, Label, UITransform, NodeEventType, native, ResolutionPolicy, view } from 'cc';
+import { _decorator, Component, Node, director, ProgressBar, Label, UITransform, NodeEventType, native } from 'cc';
+import { dh } from './dh';
+import { EventManager, EventType } from './core/eventManager';
+import { ResManager } from './core/resManager';
+import { UIManager } from './core/uiManager';
+import { ScheduleManager } from './core/scheduleManager';
+import { ConfigManager } from './core/configManager';
+import { UIHelper } from './tools/uiHelper';
+import { BaseUI } from './gui/baseUI';
+import { NetManager } from './core/netManager';
 
 const { ccclass, property } = _decorator;
 
@@ -30,8 +39,8 @@ let RunState: IRunState[] = [
     }
 ]
 
-@ccclass('Launch')
-export class Launch extends Component {
+@ccclass('Load')
+export class Load extends Component {
     /**描述文本 */
     @property({ type: Label })
     desc: Label;
@@ -43,44 +52,35 @@ export class Launch extends Component {
     /**当前运行状态 */
     state: number = 0;
 
-    resize() {
-        let dr = {
-            width: 1280,
-            height: 768
-        };
-
-        var s = screen.windowSize;
-        var rw = s.width;
-        var rh = s.height;
-        var finalW = rw;
-        var finalH = rh;
-
-        if ((rw / rh) > (dr.width / dr.height)) {
-            // 如果更长，则用定高
-            finalH = dr.height;
-            finalW = finalH * rw / rh;
-        }
-        else {
-            // 如果更短，则用定宽
-            finalW = dr.width;
-            finalH = finalW * rh / rw;
-        }
-
-        // 手工修改canvas和设计分辨率，这样反复调用也能生效。
-        view.setDesignResolutionSize(finalW, finalH, ResolutionPolicy.UNKNOWN);
-    }
-
     onLoad() {
-        this.resize();
+        director.preloadScene("main");
+        UIHelper.resize();
     }
 
     start() {
         this.initManager();
+
+        // 添加监听器
+        this.addEventListener()
+
+        // 热更
+        this.hotUpdate()
     }
 
     /**初始化管理器 */
     initManager() {
+        // 同步管理器初始化
+        EventManager.Instance.init()
+        ScheduleManager.Instance.init()
+        ResManager.Instance.init()
+        ConfigManager.Instance.init()
+        NetManager.Instance.init()
 
+        dh.eventManager = EventManager.Instance;
+        dh.scheduleManager = ScheduleManager.Instance;
+        dh.resManager = ResManager.Instance;
+        dh.configManager = ConfigManager.Instance;
+        dh.netManager = NetManager.Instance;
     }
 
     /**初始化加载UI */
