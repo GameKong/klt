@@ -17,7 +17,7 @@ export class NetManager extends BaseManager {
     static readonly Instance: NetManager = new NetManager();
 
     /**地址、端口、websocket */
-    private host: string = 'ws://127.0.0.1';
+    private host: string = 'ws://10.0.15.57';
     private port: number = 3000;
     private ws: WebSocket;
 
