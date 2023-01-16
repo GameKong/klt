@@ -92,12 +92,6 @@ export class BaseUI extends Component {
         dh.resManager.releaseByLoadList(this.res_list);
     }
 
-
-    /**加载配置表 */
-    async loadConfig() {
-        await dh.resManager.loadResLists(this.res_list);
-    }
-
     /**注册定时器 */
     registerSchedule() {
         this.schedule_list.forEach((param: ScheduleParam) => {
@@ -126,7 +120,7 @@ export class BaseUI extends Component {
      */
     handleBackEvent(close_array_ui?: boolean, keep_list?: UIID[]) {
         if (this.view_params.config.ui_back == UIBack.Bunldings) {
-            dh.uiManager.open(UIID.Town);
+            dh.uiManager.open(UIID.MainUI);
         }
         else {
             // 关闭所有非全屏UI

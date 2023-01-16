@@ -1,9 +1,9 @@
 {
-  "name": "adcc",
+  "name": "klt",
   "uuid": "daad153a-dc17-4241-9ea4-a4d049145b4a",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "creator": {
-    "version": "3.6.1"
+    "version": "3.6.2"
   },
   "dependencies": {
     "protobufjs": "^7.1.2"

@@ -7,13 +7,13 @@
   "appConfigMaps": [
     {
       "app_id": "UNKNOW",
-      "config_id": "2ab031"
+      "config_id": "084e12"
     }
   ],
   "configs": [
     {
       "app_id": "UNKNOW",
-      "config_id": "2ab031",
+      "config_id": "084e12",
       "config_name": "Default",
       "config_remarks": "",
       "services": []

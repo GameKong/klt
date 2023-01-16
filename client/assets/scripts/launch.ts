@@ -52,6 +52,9 @@ export class Launch extends Component {
     /**当前运行状态 */
     state: number = 0;
 
+    /**是否正在加载 */
+    loading: boolean = false;
+
     onLoad() {
         UIHelper.resize();
     }
@@ -94,6 +97,11 @@ export class Launch extends Component {
     addEventListener() {
         /**点击进入游戏 */
         this.node.on(NodeEventType.TOUCH_START, () => {
+            if (this.loading) {
+                return
+            }
+
+            this.loading = true
             this.initLoadUI();
             this.loadResAndRun();
         }, this);

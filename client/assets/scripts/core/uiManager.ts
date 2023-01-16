@@ -70,7 +70,7 @@ export class UIManager extends BaseManager {
      */
     open(view_params: ViewParams);
     open(ui_id: number, ui_params?: any, callbacks?: UICallbacks);
-    open(params: ViewParams | number, ui_params?: any, callbacks?: UICallbacks): void {
+    open(params:  number, ui_params?: any, callbacks?: UICallbacks): void {
         let ui_id: number;
         let config: UIConfig;
 
