@@ -1,0 +1,423 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.serviceProto = void 0;
+exports.serviceProto = {
+    "services": [
+        {
+            "id": 0,
+            "name": "admin/Logined",
+            "type": "api",
+            "conf": {
+                "needCheckAddress": true
+            }
+        },
+        {
+            "id": 1,
+            "name": "admin/RoomServerJoin",
+            "type": "api",
+            "conf": {
+                "needCheckAddress": true
+            }
+        },
+        {
+            "id": 2,
+            "name": "admin/UserInfo",
+            "type": "api",
+            "conf": {
+                "needCheckAddress": true
+            }
+        },
+        {
+            "id": 3,
+            "name": "MatchStart",
+            "type": "api",
+            "conf": {
+                "needLogin": true
+            }
+        },
+        {
+            "id": 4,
+            "name": "RoomCreate",
+            "type": "api",
+            "conf": {
+                "needLogin": true
+            }
+        },
+        {
+            "id": 5,
+            "name": "RoomList",
+            "type": "api",
+            "conf": {
+                "needLogin": true
+            }
+        }
+    ],
+    "types": {
+        "admin/PtlLogined/ReqLogined": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseRequest"
+                    }
+                }
+            ],
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "user",
+                    "type": {
+                        "type": "Reference",
+                        "target": "../../../module/account/bll/User/DbUser"
+                    }
+                }
+            ]
+        },
+        "../base/BaseRequest": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "__ssoToken",
+                    "type": {
+                        "type": "String"
+                    },
+                    "optional": true
+                }
+            ]
+        },
+        "../../../module/account/bll/User/DbUser": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "_id",
+                    "type": {
+                        "type": "Reference",
+                        "target": "?mongodb/ObjectId"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "key",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "username",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "createtime",
+                    "type": {
+                        "type": "Date"
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "pos",
+                    "type": {
+                        "type": "Reference",
+                        "target": "../../../shared/types/RoleState/RolePosition"
+                    },
+                    "optional": true
+                },
+                {
+                    "id": 5,
+                    "name": "rotation",
+                    "type": {
+                        "type": "Reference",
+                        "target": "../../../shared/types/RoleState/RoleRotation"
+                    },
+                    "optional": true
+                }
+            ]
+        },
+        "../../../shared/types/RoleState/RolePosition": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "x",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "y",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "z",
+                    "type": {
+                        "type": "Number"
+                    }
+                }
+            ]
+        },
+        "../../../shared/types/RoleState/RoleRotation": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "x",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "y",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "z",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "w",
+                    "type": {
+                        "type": "Number"
+                    }
+                }
+            ]
+        },
+        "admin/PtlLogined/ResLogined": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseResponse"
+                    }
+                }
+            ]
+        },
+        "../base/BaseResponse": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "__ssoToken",
+                    "type": {
+                        "type": "String"
+                    },
+                    "optional": true
+                }
+            ]
+        },
+        "admin/PtlRoomServerJoin/ReqRoomServerJoin": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "serverUrl",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "admin/PtlRoomServerJoin/ResRoomServerJoin": {
+            "type": "Interface"
+        },
+        "admin/PtlUserInfo/ReqUserInfo": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseRequest"
+                    }
+                }
+            ]
+        },
+        "admin/PtlUserInfo/ResUserInfo": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "user",
+                    "type": {
+                        "type": "Reference",
+                        "target": "../../../module/account/bll/User/DbUser"
+                    }
+                }
+            ]
+        },
+        "PtlMatchStart/ReqMatchStart": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseRequest"
+                    }
+                }
+            ]
+        },
+        "PtlMatchStart/ResMatchStart": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseResponse"
+                    }
+                }
+            ],
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "serverUrl",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "roomId",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlRoomCreate/ReqRoomCreate": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseRequest"
+                    }
+                }
+            ],
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "roomName",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlRoomCreate/ResRoomCreate": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseResponse"
+                    }
+                }
+            ],
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "serverUrl",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "roomId",
+                    "type": {
+                        "type": "String"
+                    }
+                }
+            ]
+        },
+        "PtlRoomList/ReqRoomList": {
+            "type": "Interface",
+            "extends": [
+                {
+                    "id": 0,
+                    "type": {
+                        "type": "Reference",
+                        "target": "../base/BaseRequest"
+                    }
+                }
+            ]
+        },
+        "PtlRoomList/ResRoomList": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "rooms",
+                    "type": {
+                        "type": "Array",
+                        "elementType": {
+                            "type": "Interface",
+                            "properties": [
+                                {
+                                    "id": 0,
+                                    "name": "name",
+                                    "type": {
+                                        "type": "String"
+                                    }
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "amount",
+                                    "type": {
+                                        "type": "Number",
+                                        "scalarType": "uint"
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "max",
+                                    "type": {
+                                        "type": "Number",
+                                        "scalarType": "uint"
+                                    }
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "serverUrl",
+                                    "type": {
+                                        "type": "String"
+                                    }
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "roomId",
+                                    "type": {
+                                        "type": "String"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+};

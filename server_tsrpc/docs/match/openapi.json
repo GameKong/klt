@@ -1,0 +1,674 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TSRPC Open API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/admin/Logined": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/Logined",
+        "requestBody": {
+          "description": "Req<Logined>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlLogined_ReqLogined"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResLogined>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlLogined_ResLogined"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/admin/RoomServerJoin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/RoomServerJoin",
+        "requestBody": {
+          "description": "Req<RoomServerJoin>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlRoomServerJoin_ReqRoomServerJoin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomServerJoin>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlRoomServerJoin_ResRoomServerJoin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/admin/UserInfo": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/UserInfo",
+        "requestBody": {
+          "description": "Req<UserInfo>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlUserInfo_ReqUserInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResUserInfo>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlUserInfo_ResUserInfo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/MatchStart": {
+      "post": {
+        "operationId": "MatchStart",
+        "requestBody": {
+          "description": "Req<MatchStart>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlMatchStart_ReqMatchStart"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResMatchStart>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlMatchStart_ResMatchStart"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomCreate": {
+      "post": {
+        "operationId": "RoomCreate",
+        "requestBody": {
+          "description": "Req<RoomCreate>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomCreate_ReqRoomCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomCreate>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomCreate_ResRoomCreate"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomList": {
+      "post": {
+        "operationId": "RoomList",
+        "requestBody": {
+          "description": "Req<RoomList>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomList_ReqRoomList"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomList>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomList_ResRoomList"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "admin_PtlLogined_ReqLogined": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "user": {
+                "$ref": "#/components/schemas/_________module_account_bll_User_DbUser",
+                "description": "玩家数据"
+              }
+            },
+            "required": [
+              "user"
+            ]
+          }
+        ],
+        "description": "网关服务器通知匹配服务登录成功请求数据"
+      },
+      "___base_BaseRequest": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          }
+        },
+        "description": "HTTP 基础请求数据"
+      },
+      "_________module_account_bll_User_DbUser": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/?mongodb_ObjectId"
+          },
+          "key": {
+            "type": "number",
+            "description": "自增量唯一标识"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "createtime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "pos": {
+            "$ref": "#/components/schemas/_________shared_types_RoleState_RolePosition",
+            "description": "玩家位置信息"
+          },
+          "rotation": {
+            "$ref": "#/components/schemas/_________shared_types_RoleState_RoleRotation",
+            "description": "玩家旋转信息"
+          }
+        },
+        "required": [
+          "_id",
+          "key",
+          "username",
+          "createtime"
+        ],
+        "description": "用户表数据结构"
+      },
+      "_________shared_types_RoleState_RolePosition": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X 轴位置"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y 轴位置"
+          },
+          "z": {
+            "type": "number",
+            "description": "Z 轴位置"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ],
+        "description": "玩家位置信息"
+      },
+      "_________shared_types_RoleState_RoleRotation": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "四元数 X"
+          },
+          "y": {
+            "type": "number",
+            "description": "四元数 Y"
+          },
+          "z": {
+            "type": "number",
+            "description": "四元数 Z"
+          },
+          "w": {
+            "type": "number",
+            "description": "四元数 W"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z",
+          "w"
+        ],
+        "description": "玩家旋转信息"
+      },
+      "admin_PtlLogined_ResLogined": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "网关服务器通知匹配服务登录成功响应数据"
+      },
+      "___base_BaseResponse": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          }
+        },
+        "description": "HTTP 基础返回数据"
+      },
+      "admin_PtlRoomServerJoin_ReqRoomServerJoin": {
+        "type": "object",
+        "properties": {
+          "serverUrl": {
+            "type": "string",
+            "description": "房间服务器 WebSocket 地址"
+          }
+        },
+        "required": [
+          "serverUrl"
+        ],
+        "description": "加入房间服务器进入工作状态请求数据"
+      },
+      "admin_PtlRoomServerJoin_ResRoomServerJoin": {
+        "type": "object",
+        "properties": {},
+        "description": "加入房间服务器进入工作状态响应数据"
+      },
+      "admin_PtlUserInfo_ReqUserInfo": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "获取玩家信息请求数据"
+      },
+      "admin_PtlUserInfo_ResUserInfo": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/_________module_account_bll_User_DbUser"
+          }
+        },
+        "required": [
+          "user"
+        ],
+        "description": "获取玩家信息响应数据"
+      },
+      "PtlMatchStart_ReqMatchStart": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "开始匹配请求信息"
+      },
+      "PtlMatchStart_ResMatchStart": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "serverUrl": {
+                "type": "string",
+                "description": "房间服务器地址"
+              },
+              "roomId": {
+                "type": "string",
+                "description": "房间编号"
+              }
+            },
+            "required": [
+              "serverUrl",
+              "roomId"
+            ]
+          }
+        ],
+        "description": "开始匹配响应信息"
+      },
+      "PtlRoomCreate_ReqRoomCreate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "roomName": {
+                "type": "string",
+                "description": "房间名"
+              }
+            },
+            "required": [
+              "roomName"
+            ]
+          }
+        ],
+        "description": "创建房间请求信息"
+      },
+      "PtlRoomCreate_ResRoomCreate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "serverUrl": {
+                "type": "string",
+                "description": "房间服务器地址"
+              },
+              "roomId": {
+                "type": "string",
+                "description": "房间编号"
+              }
+            },
+            "required": [
+              "serverUrl",
+              "roomId"
+            ]
+          }
+        ],
+        "description": "创建房间响应信息"
+      },
+      "PtlRoomList_ReqRoomList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "在线房间列表请求信息"
+      },
+      "PtlRoomList_ResRoomList": {
+        "type": "object",
+        "properties": {
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "房间名"
+                },
+                "amount": {
+                  "type": "integer",
+                  "description": "当前玩家数量"
+                },
+                "max": {
+                  "type": "integer",
+                  "description": "最大玩家数量"
+                },
+                "serverUrl": {
+                  "type": "string",
+                  "description": "房间服务器地址"
+                },
+                "roomId": {
+                  "type": "string",
+                  "description": "房间编号"
+                }
+              },
+              "required": [
+                "name",
+                "amount",
+                "max",
+                "serverUrl",
+                "roomId"
+              ]
+            },
+            "description": "房间列表"
+          }
+        },
+        "required": [
+          "rooms"
+        ],
+        "description": "在线房间列表响应信息"
+      },
+      "?bson_ObjectID": {
+        "type": "string"
+      },
+      "?bson_ObjectId": {
+        "type": "string"
+      },
+      "?mongodb_ObjectID": {
+        "type": "string"
+      },
+      "?mongodb_ObjectId": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "API 错误",
+              "description": "业务错误（ApiError）返回 HTTP 状态码 200，其它错误返回 HTTP 状态码 500",
+              "properties": {
+                "isSucc": {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ],
+                  "default": false
+                },
+                "err": {
+                  "type": "object",
+                  "description": "TsrpcError",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "ApiError",
+                        "NetworkError",
+                        "ServerError",
+                        "ClientError"
+                      ]
+                    },
+                    "code": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

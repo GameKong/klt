@@ -1,0 +1,19 @@
+{
+    "package_version": 2,
+    "version": "1.0.0",
+    "name": "excel2json",
+    "main": "./index.js",
+    "author": "kongl",
+    "dependencies": {
+        "fs-extra": "^10.0.0"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.5",
+        "@types/node": "^16.0.1",
+        "exceljs": "^4.2.1"
+    },
+    "scripts": {
+        "build": "tsc index.ts",
+        "start": "node index.js"
+    }
+}

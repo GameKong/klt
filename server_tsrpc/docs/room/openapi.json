@@ -1,0 +1,967 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TSRPC Open API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/admin/Auth": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/Auth",
+        "requestBody": {
+          "description": "Req<Auth>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlAuth_ReqAuth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResAuth>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlAuth_ResAuth"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/admin/RoomCreate": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/RoomCreate",
+        "requestBody": {
+          "description": "Req<RoomCreate>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlRoomCreate_ReqRoomCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomCreate>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlRoomCreate_ResRoomCreate"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomChat": {
+      "post": {
+        "operationId": "RoomChat",
+        "requestBody": {
+          "description": "Req<RoomChat>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomChat_ReqRoomChat"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomChat>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomChat_ResRoomChat"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomJoin": {
+      "post": {
+        "operationId": "RoomJoin",
+        "requestBody": {
+          "description": "Req<RoomJoin>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomJoin_ReqRoomJoin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomJoin>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomJoin_ResRoomJoin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomLeave": {
+      "post": {
+        "operationId": "RoomLeave",
+        "requestBody": {
+          "description": "Req<RoomLeave>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomLeave_ReqRoomLeave"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomLeave>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomLeave_ResRoomLeave"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "admin_MsgRoomUpdateState_MsgRoomUpdateState": {
+        "type": "object",
+        "properties": {
+          "rooms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/______types_RoomState_RoomState"
+            },
+            "description": "房间数组"
+          }
+        },
+        "required": [
+          "rooms"
+        ],
+        "description": "更新房间状态信息"
+      },
+      "______types_RoomState_RoomState": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "房间编号"
+          },
+          "name": {
+            "type": "string",
+            "description": "房间名"
+          },
+          "amount": {
+            "type": "integer",
+            "description": "房间当前用户数量"
+          },
+          "max": {
+            "type": "integer",
+            "description": "房间最大用户数量"
+          },
+          "timeUpdate": {
+            "type": "integer",
+            "description": "房间信息的最后更新时间"
+          },
+          "timeStartMatch": {
+            "type": "integer",
+            "description": "为 undefined 代表不在匹配中"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "amount",
+          "max",
+          "timeUpdate"
+        ],
+        "description": "与匹配服务器同步的房间数据"
+      },
+      "admin_PtlAuth_ReqAuth": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "MatchServer"
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "description": "房间服务器授权请求信息"
+      },
+      "admin_PtlAuth_ResAuth": {
+        "type": "object",
+        "properties": {},
+        "description": "房间服务器授权响应信息"
+      },
+      "admin_PtlRoomCreate_ReqRoomCreate": {
+        "type": "object",
+        "properties": {
+          "roomName": {
+            "type": "string",
+            "description": "房间名"
+          }
+        },
+        "required": [
+          "roomName"
+        ],
+        "description": "创建房间请求数据"
+      },
+      "admin_PtlRoomCreate_ResRoomCreate": {
+        "type": "object",
+        "properties": {
+          "roomId": {
+            "type": "string",
+            "description": "房间编号"
+          }
+        },
+        "required": [
+          "roomId"
+        ],
+        "description": "创建房间反回数据"
+      },
+      "client_MsgRoleMove_MsgRoleMove": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "触摸地图目标位置移动信息"
+          },
+          "vector": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "摇杆移动方向信息"
+          },
+          "angle": {
+            "type": "number",
+            "description": "角度"
+          },
+          "joystick": {
+            "type": "boolean",
+            "description": "是否为摇杆方式移动"
+          },
+          "skillId": {
+            "type": "number",
+            "description": "是否选最近的目标发动技能"
+          },
+          "targetId": {
+            "type": "string",
+            "description": "技能攻击目标编号"
+          }
+        },
+        "description": "接受客户端的游戏操作数据"
+      },
+      "______types_RoleState_RoleMove": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "玩家编号"
+          },
+          "target": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "触摸地图目标位置移动信息"
+          },
+          "vector": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "摇杆移动方向信息"
+          },
+          "angle": {
+            "type": "number",
+            "description": "角度"
+          },
+          "joystick": {
+            "type": "boolean",
+            "description": "是否为摇杆方式移动"
+          },
+          "skillId": {
+            "type": "number",
+            "description": "是否选最近的目标发动技能"
+          },
+          "targetId": {
+            "type": "string",
+            "description": "技能攻击目标编号"
+          }
+        },
+        "required": [
+          "uid"
+        ],
+        "description": "玩家移动控制请求与广播数据"
+      },
+      "______types_RoleState_RolePosition": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X 轴位置"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y 轴位置"
+          },
+          "z": {
+            "type": "number",
+            "description": "Z 轴位置"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ],
+        "description": "玩家位置信息"
+      },
+      "client_MsgRoleState_MsgRoleState": {
+        "type": "object",
+        "properties": {
+          "pos": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "玩家位置"
+          },
+          "rotation": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleRotation",
+            "description": "玩家旋转信息"
+          },
+          "action": {
+            "type": "string",
+            "description": "玩家动作（暂不需要使用）"
+          }
+        },
+        "required": [
+          "pos",
+          "rotation",
+          "action"
+        ],
+        "description": "接受客户端同步当前状态数据"
+      },
+      "______types_RoleState_RoleState": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "玩家进房间时生成的唯一编号"
+          },
+          "pos": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "玩家位置"
+          },
+          "rotation": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleRotation",
+            "description": "玩家旋转信息"
+          },
+          "action": {
+            "type": "string",
+            "description": "玩家动作（暂不需要使用）"
+          }
+        },
+        "required": [
+          "id",
+          "pos",
+          "rotation",
+          "action"
+        ],
+        "description": "用于客户端定时与服务务同步位置信息与服务器定时广播给房间内其它玩家"
+      },
+      "______types_RoleState_RoleRotation": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "四元数 X"
+          },
+          "y": {
+            "type": "number",
+            "description": "四元数 Y"
+          },
+          "z": {
+            "type": "number",
+            "description": "四元数 Z"
+          },
+          "w": {
+            "type": "number",
+            "description": "四元数 W"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z",
+          "w"
+        ],
+        "description": "玩家旋转信息"
+      },
+      "PtlRoomChat_ReqRoomChat": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string",
+                "description": "聊天内容"
+              }
+            },
+            "required": [
+              "content"
+            ]
+          }
+        ],
+        "description": "房间聊天请求数据"
+      },
+      "___base_BaseRequest": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          }
+        },
+        "description": "HTTP 基础请求数据"
+      },
+      "PtlRoomChat_ResRoomChat": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "房间聊天响应数据"
+      },
+      "___base_BaseResponse": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          }
+        },
+        "description": "HTTP 基础返回数据"
+      },
+      "PtlRoomJoin_ReqRoomJoin": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "number",
+                "description": "玩家账号编号"
+              },
+              "roomId": {
+                "type": "string",
+                "description": "房间编号"
+              }
+            },
+            "required": [
+              "userId",
+              "roomId"
+            ]
+          }
+        ],
+        "description": "房间加入请求数据"
+      },
+      "PtlRoomJoin_ResRoomJoin": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "roleId": {
+                "type": "string",
+                "description": "当前玩家编号"
+              },
+              "room": {
+                "$ref": "#/components/schemas/______types_RoomState_RoomDetailed",
+                "description": "房间信息"
+              }
+            },
+            "required": [
+              "roleId",
+              "room"
+            ]
+          }
+        ],
+        "description": "房间加入响应数据"
+      },
+      "______types_RoomState_RoomDetailed": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "房间编号"
+          },
+          "name": {
+            "type": "string",
+            "description": "房间名"
+          },
+          "max": {
+            "type": "integer",
+            "description": "房间可容纳的最大人数"
+          },
+          "timeLastEmpty": {
+            "type": "number",
+            "description": "上一次空房的时间（undefined 代表房内有人） 用于定时解散无人的房间"
+          },
+          "timeStartMatch": {
+            "type": "number",
+            "description": "开始匹配的时间，`undefined` 代表不在匹配中"
+          },
+          "timeUpdate": {
+            "type": "number",
+            "description": "房间信息的最后更新时间"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/______types_RoleState_RoleDetailed"
+            },
+            "description": "房间内的用户"
+          },
+          "npcs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/______types_RoleState_RoleDetailed"
+            },
+            "description": "房间内非玩家角色"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "role": {
+                  "$ref": "#/components/schemas/______types_RoleState_RoleInfo"
+                },
+                "content": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "time",
+                "role",
+                "content"
+              ]
+            },
+            "description": "历史聊天信息（只保留最近的 N 条）"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "max",
+          "timeUpdate",
+          "roles",
+          "npcs",
+          "messages"
+        ],
+        "description": "房间详细数据"
+      },
+      "______types_RoleState_RoleDetailed": {
+        "type": "object",
+        "properties": {
+          "roleInfo": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleInfo",
+            "description": "角色信息"
+          },
+          "state": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleState",
+            "description": "玩家状态"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "玩家数值属性"
+          }
+        },
+        "required": [
+          "roleInfo",
+          "state",
+          "attributes"
+        ],
+        "description": "玩家在房间内详细数据"
+      },
+      "______types_RoleState_RoleInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "玩家编号"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "玩家昵称"
+          }
+        },
+        "required": [
+          "id",
+          "nickname"
+        ],
+        "description": "玩家信息"
+      },
+      "PtlRoomLeave_ReqRoomLeave": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseRequest"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "房间离开请求数据"
+      },
+      "PtlRoomLeave_ResRoomLeave": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/___base_BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {}
+          }
+        ],
+        "description": "房间离开响应数据"
+      },
+      "server_MsgChat_MsgChat": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "发送时间"
+          },
+          "roleInfo": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleInfo",
+            "description": "玩家信息"
+          },
+          "content": {
+            "type": "string",
+            "description": "聊天内容"
+          }
+        },
+        "required": [
+          "time",
+          "roleInfo",
+          "content"
+        ],
+        "description": "服务器广播聊天数据"
+      },
+      "server_MsgRoleAttack_MsgRoleAttack": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "玩家编号"
+          },
+          "skillId": {
+            "type": "number",
+            "description": "技能标号"
+          },
+          "state": {
+            "$ref": "#/components/schemas/server_MsgRoleAttack_SkillState",
+            "description": "技能状态"
+          },
+          "targetId": {
+            "type": "string",
+            "description": "目标玩家编号"
+          },
+          "pos": {
+            "$ref": "#/components/schemas/______types_RoleState_RolePosition",
+            "description": "技能释放目标点"
+          }
+        },
+        "required": [
+          "uid",
+          "skillId",
+          "state"
+        ],
+        "description": "服务器接受与广播攻击行为"
+      },
+      "server_MsgRoleAttack_SkillState": {
+        "type": "number",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "description": "技能施放状态"
+      },
+      "server_MsgRoleJoin_MsgRoleJoin": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleDetailed"
+          },
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "加入房间时间"
+          }
+        },
+        "required": [
+          "role",
+          "time"
+        ],
+        "description": "服务器通知客户端加入房间"
+      },
+      "server_MsgRoleLeave_MsgRoleLeave": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "离开房间时间"
+          },
+          "roleInfo": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleInfo",
+            "description": "离开房间的玩家信息"
+          }
+        },
+        "required": [
+          "time",
+          "roleInfo"
+        ],
+        "description": "服务器通知客户端离开房间"
+      },
+      "server_MsgRoleMove_MsgRoleMove": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/______types_RoleState_RoleMove",
+            "description": "房间控制数据"
+          }
+        },
+        "required": [
+          "state"
+        ],
+        "description": "服务器广播玩家控制数据"
+      },
+      "server_MsgRoleRevive_MsgRoleRevive": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "玩家编号"
+          }
+        },
+        "required": [
+          "uid"
+        ],
+        "description": "角色复活协议"
+      },
+      "server_MsgRoomRoleState_MsgRoomRoleState": {
+        "type": "object",
+        "properties": {
+          "states": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": {
+              "$ref": "#/components/schemas/______types_RoleState_RoleState"
+            },
+            "description": "房间内所有玩家状态数据"
+          }
+        },
+        "required": [
+          "states"
+        ],
+        "description": "房间内所有玩家状态"
+      },
+      "?bson_ObjectID": {
+        "type": "string"
+      },
+      "?bson_ObjectId": {
+        "type": "string"
+      },
+      "?mongodb_ObjectID": {
+        "type": "string"
+      },
+      "?mongodb_ObjectId": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "API 错误",
+              "description": "业务错误（ApiError）返回 HTTP 状态码 200，其它错误返回 HTTP 状态码 500",
+              "properties": {
+                "isSucc": {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ],
+                  "default": false
+                },
+                "err": {
+                  "type": "object",
+                  "description": "TsrpcError",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "ApiError",
+                        "NetworkError",
+                        "ServerError",
+                        "ClientError"
+                      ]
+                    },
+                    "code": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
