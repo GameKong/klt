@@ -41,5 +41,5 @@ class TableBuff {
     }
 }
 exports.TableBuff = TableBuff;
-TableBuff.TableName = "/config/Buff.json";
+TableBuff.TableName = "/../../../config/buff.json";
 TableBuff.Table = null;

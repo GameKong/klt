@@ -24,7 +24,7 @@ exports.Config = {
         /** 区服配置 */
         area: [
             { name: "艾欧尼亚", server: `${ip}:${process.env['PORT_MATCH1']}` || `${ip}:2100` },
-            { name: "诺克萨斯", server: `${ip}:${process.env['PORT_MATCH1']}` || `${ip}:2200` }
+            { name: "诺克萨斯", server: `${ip}:${process.env['PORT_MATCH2']}` || `${ip}:2200` }
         ]
     },
     /** 匹配服务配置 */

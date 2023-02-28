@@ -17,7 +17,7 @@
     "sync": "tsrpc-cli sync",
     "api": "tsrpc-cli api",
     "copy": "copyfiles -u 2 ./src/config/*.json ./dist/config/",
-    "start:all": "pm2 start ecosystem.config.js --env production && pm2 monit",
+    "start:all": "pm2 start ecosystem.config.js --env develop && pm2 monit",
     "shutdown:all": "pm2 delete all",
     "dev:robot": "tsrpc-cli dev --entry src/serverRobotEntry.ts",
     "dev:gate": "tsrpc-cli dev --entry src/serverGateEntry.ts",

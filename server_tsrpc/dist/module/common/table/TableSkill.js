@@ -25,5 +25,5 @@ class TableSkill {
     }
 }
 exports.TableSkill = TableSkill;
-TableSkill.TableName = "/config/Skill.json";
+TableSkill.TableName = "/../../../config/skill.json";
 TableSkill.Table = null;
