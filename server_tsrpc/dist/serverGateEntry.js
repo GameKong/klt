@@ -14,7 +14,7 @@ const ServerGate_1 = require("./server/gate/ServerGate");
 const ServerGateSystem_1 = require("./server/gate/ServerGateSystem");
 /** 网关服务器对象 */
 exports.sg = null;
-function main() {
+function main() { 
     if (Config_1.Config.localHttpsAndWss)
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     CommonUtil_1.CommonUtil.init(new ServerGateSystem_1.ServerGateSystem());
