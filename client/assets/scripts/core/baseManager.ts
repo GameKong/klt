@@ -14,7 +14,7 @@ export class BaseManager {
     /**管理器单例 */
     static readonly Instance;
 
-    Constructor() {
+    constructor() {
         
     }
 

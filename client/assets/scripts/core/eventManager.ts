@@ -3,7 +3,8 @@ import { BaseManager } from "./baseManager";
 
 /**事件类型 */
 export const enum EventType {
-    LoadResProgress = "LoadResProgress" // 测试
+    LoadResProgress = "LoadResProgress", // 加载资源进度
+    SelectGameArea = "SelectGameArea" // 选择区服
 }
 
 /**

@@ -56,14 +56,6 @@ export enum LayerType {
     Guide = "LayerGuide"
 }
 
-/** 界面唯一标识id */
-export enum UIID {
-    /** 主界面 */
-    MainUI = 1,
-    /** 玩家信息界面 */
-    Player = 2,
-}
-
 /**UI入场动画类型 */
 export enum UIAction {
     ScaleIn = 1
@@ -122,6 +114,14 @@ export class UIConfig {
             this[key] = param[key];
         }
     }
+}
+
+/** 界面唯一标识id */
+export enum UIID {
+    /** 主界面 */
+    MainUI = 1,
+    /** 玩家信息界面 */
+    Player = 2
 }
 
 /** 打开界面方式的配置数据 */

@@ -6,6 +6,8 @@
     "version": "3.6.2"
   },
   "dependencies": {
-    "protobufjs": "^7.1.2"
+    "crypto-es": "^1.2.7",
+    "tsrpc-browser": "^3.4.11",
+    "tsrpc-miniapp": "^3.4.11"
   }
 }

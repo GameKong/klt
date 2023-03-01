@@ -6,7 +6,7 @@ import { NetManager } from './core/netManager';
 import { ResManager } from './core/resManager';
 import { ScheduleManager } from './core/scheduleManager';
 import { UIManager } from './core/uiManager';
-import { userData } from './data/userData';
+import { StorageManager } from './core/storageManager';
 import { GConst } from './globals/gConst';
 const { ccclass, property } = _decorator;
 
@@ -16,7 +16,7 @@ export class dh {
     //日志模块
     static logger = Logger;
     //本地永久数据
-    static userData = userData;
+    static storageManager:StorageManager;
     //消息管理
     static eventManager: EventManager;
     /**资源加载 */

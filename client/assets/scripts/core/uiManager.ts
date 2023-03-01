@@ -38,17 +38,18 @@ export class UIManager extends BaseManager {
     /**界面映射 */
     ui_map: UIMap;
 
-    init() {
+    async init() {
         super.init()
 
         this.g_root = find("Canvas/GRoot");
         this.layer_ui = new LayerUI(LayerType.UI, this.g_root);
         this.layer_nofity = new LayerNotify(LayerType.Notify, this.g_root);
+        await this.layer_nofity.init();
     }
 
     /** toast 提示 */
-    toast(view_params: ViewParams) {
-        this.layer_nofity.add(view_params)
+    toast(text: string|string[]) {
+        this.layer_nofity.add(text)
     }
 
     /**
@@ -68,9 +69,9 @@ export class UIManager extends BaseManager {
      * @param ui_params        窗口参数
      * @param callbacks     回调对象
      */
-    open(view_params: ViewParams);
+    open(view_params: ViewParams); 
     open(ui_id: number, ui_params?: any, callbacks?: UICallbacks);
-    open(params:  number, ui_params?: any, callbacks?: UICallbacks): void {
+    open(params: ViewParams | number, ui_params?: any, callbacks?: UICallbacks): void {
         let ui_id: number;
         let config: UIConfig;
 

@@ -3,7 +3,6 @@ import { NATIVE } from 'cc/env';
 import { dh } from './dh';
 import { VERSION_CODE } from './version';
 import { NetManager } from "./core/netManager";
-import LOGIC from "./net/protocol/pb_logic";
 import { UIManager } from './core/uiManager';
 import { UIHelper } from './tools/uiHelper';
 import { UIID } from './gui/uiDefines';
@@ -20,7 +19,6 @@ export class main extends Component {
     }
 
     async start() {
-        await this.initManager()
         dh.uiManager.open(UIID.MainUI)
         
         // this.test01();
@@ -28,10 +26,6 @@ export class main extends Component {
         // this.testNetManager();
     }
 
-    async initManager() {
-        UIManager.Instance.init()
-        dh.uiManager = UIManager.Instance;
-    }
 
     /**
      * 热更新部分仅逻辑测试，最终应该在 main.js实现相关逻辑
