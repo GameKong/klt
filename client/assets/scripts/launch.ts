@@ -10,8 +10,8 @@ import { StorageManager } from './core/storageManager';
 import { LocalDataKeyIV } from './globals/gConst';
 import { UIID } from './gui/uiDefines';
 import { ResGameArea } from './shared/protocols/gate/PtlGameArea';
-import { AreaCell } from './areaCell';
 import { UIManager } from './core/uiManager';
+import { LoggerManager } from './core/loggerManager';
 
 const { ccclass, property } = _decorator;
 
@@ -53,21 +53,12 @@ export class Launch extends Component {
     @property({ type: ProgressBar })
     loading_bar: ProgressBar;
 
-    /**区服列表 */
-    @property({ type: ScrollView })
-    area_list: ScrollView;
-
-    @property({ type: Prefab })
-    prefab_area!: Prefab;
-
     /**当前运行状态 */
     state: number = 0;
 
     /**是否正在加载 */
     loading: boolean = false;
 
-    /**选择的区服 */
-    select_area: ResGameArea["area"][number];
 
     onLoad() {
         UIHelper.resize();
@@ -75,8 +66,6 @@ export class Launch extends Component {
 
     async start() {
         this.initManager();
-
-        await this.initSyncManager()
 
         // 添加监听器
         this.addEventListener()
@@ -95,6 +84,9 @@ export class Launch extends Component {
         EventManager.Instance.init()
         dh.eventManager = EventManager.Instance;
 
+        LoggerManager.Instance.init()
+        dh.loggerManager = LoggerManager.Instance;
+
         ScheduleManager.Instance.init()
         dh.scheduleManager = ScheduleManager.Instance;
 
@@ -106,12 +98,6 @@ export class Launch extends Component {
 
         NetManager.Instance.init()
         dh.netManager = NetManager.Instance;
-    }
-
-
-    async initSyncManager() {
-        await UIManager.Instance.init()
-        dh.uiManager = UIManager.Instance;
     }
 
     /**初始化加载UI */
@@ -126,18 +112,7 @@ export class Launch extends Component {
     addEventListener() {
         /**点击进入游戏 */
         this.node.on(NodeEventType.TOUCH_START, () => {
-            if (!this.select_area) {
-                dh.uiManager.toast(`请先选择服务器`);
-                return
-            }
-            
-            if (this.loading) {
-                return
-            }
 
-            this.loading = true
-            this.initLoadUI();
-            this.loadResAndRun();
         }, this);
 
         /**加载资源更新UI */
@@ -166,43 +141,12 @@ export class Launch extends Component {
         // if (NATIVE) {
         // console.log(2)
         //     let storagePath = native.fileUtils.getWritablePath() + "hot"
-        //     let am = native.AssetsManager.create('', storagePath); 
+        //     let am = native.AssetsManager.create('', storagePath);
         // }
 
-    }
-
-    /** 获取区服信息 */
-    async initGameArea() {
-        var ret = await dh.netManager.http_gate.callApi(`GameArea`, {});
-        if (!ret.isSucc) {
-            dh.uiManager.toast(`拉区服务器列表失败，${ret.err}`)
-            this.setSelectPanelVisible(false);
-            return
-        }
-
-        this.setSelectPanelVisible(true)
-        this.area_list.content!.removeAllChildren();
-
-        for (let area_info of ret.res.area) {
-            let node = instantiate(this.prefab_area);
-            this.area_list.content!.addChild(node);
-
-            let cell = node.getComponent(AreaCell);
-            cell.options = {
-                area: area_info,
-                onClick: (select_area) => {
-                    this.select_area = select_area
-                    this.setSelectPanelVisible(false);
-                    this.node.getChildByPath("tipNode/desc").active = true;
-                    this.node.getChildByPath("tipNode/server_name").getComponent(Label).string = select_area.name
-                }
-            }
-        }
-
-    }
-
-    setSelectPanelVisible(visible){
-        this.area_list.node.parent.active = visible;
+        /**热更后，加载资源，运行主场景 */
+        this.initLoadUI();
+        this.loadResAndRun();
     }
 }
 

@@ -15,13 +15,15 @@ import { serviceProto as ServiceProtoRoom, ServiceType as ServiceTypeRoom } from
 import { account } from "../account/Account";
 import { Config } from "../config/Config";
 import { CommonUtil } from "./CommonUtil";
+import { ServerUrlUtils } from "./serverUrlUtils";
 
 /** TSRPC 客户端、服务器对象工厂 */
 export class CommonFactory {
     /** 创建 Http 网关服务端对象 */
     static createHsGate() {
+        let dbUrlInfo = ServerUrlUtils.getGateUrlInfo();
         var options: Partial<HttpServerOptions<ServiceTypeGate>> = {
-            port: parseInt(Config.gate.port),
+            port: dbUrlInfo.port,
             json: ShareConfig.json,
             https: CommonUtil.getCertificate()
         }
@@ -34,8 +36,11 @@ export class CommonFactory {
 
     /** 创建 Http 匹配服务端对象 */
     static createHsMatch() {
+        let dbUrlInfo = ServerUrlUtils.getMatchUrlInfo();
+        let area_number = parseInt(Config.match.area_number!)
+        
         var options: Partial<HttpServerOptions<ServiceTypeMatch>> = {
-            port: parseInt(Config.match.port),
+            port: dbUrlInfo[area_number].port,
             json: ShareConfig.json,
             https: CommonUtil.getCertificate()
         }
@@ -49,8 +54,11 @@ export class CommonFactory {
 
     /** 创建 Websocket 房间服务器 */
     static createWssRoom() {
+        let dbUrlInfo = ServerUrlUtils.getRoomUrlInfo();
+        let area_number = parseInt(Config.room.area_number!)
+
         let options: Partial<WsServerOptions<ServiceTypeRoom>> = {
-            port: parseInt(Config.room.port),
+            port: dbUrlInfo[area_number].port,
             logMsg: Config.room.logMsg,
             json: ShareConfig.json,
             wss: CommonUtil.getCertificate()
@@ -65,11 +73,13 @@ export class CommonFactory {
 
     /**
      * 创建 Websocket 匹配服务连接房间服务器的客户端
-     * @param serverUrl     房间 Websocket 服务器地址
+     * @param area_number     房间 Websocket 服务器区号
      * @param server        匹配服务器对象
      * @returns WsClient
      */
-    static createWscRoom(serverUrl: string, server: HttpServer) {
+    static createWscRoom(area_number: number, server: HttpServer) {
+        let serverUrl = ServerUrlUtils.getRoomUrlByAreaNumber(area_number);
+
         let wsc = new WsClient(ServiceProtoRoom, {
             server: serverUrl,
             logger: new PrefixLogger({
@@ -87,9 +97,10 @@ export class CommonFactory {
         return wsc;
     }
 
-    /** 创建匹配服务器的 Http 客户端连接 */
-    static createHcMatch(serverUrl: string) {
-        let url = `${ShareConfig.https ? "https" : "http"}://${serverUrl}/`;
+    /** 创建连接匹配服务器的 Http 客户端 */
+    static createHcMatch(area_number: number) {
+        let dbUrlInfo = ServerUrlUtils.getMatchUrlInfo();
+        let url = `${ShareConfig.https ? "https" : "http"}://${dbUrlInfo[area_number].url}:${dbUrlInfo[area_number].port}/`;
         let hc = new HttpClient(ServiceProtoMatch, { server: url });
         this.flowClientApi(hc);
 

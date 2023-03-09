@@ -39,6 +39,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
+    "version": 3,
     "services": [
         {
             "id": 0,
@@ -146,6 +147,13 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 {
                     "id": 2,
                     "name": "username",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "password",
                     "type": {
                         "type": "String"
                     }
@@ -265,10 +273,10 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
-                    "name": "serverUrl",
+                    "id": 1,
+                    "name": "area_number",
                     "type": {
-                        "type": "String"
+                        "type": "Number"
                     }
                 }
             ]
@@ -327,13 +335,33 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "properties": [
                 {
                     "id": 0,
+                    "name": "room_info",
+                    "type": {
+                        "type": "Reference",
+                        "target": "../../types/RoomState/RoomInfo"
+                    }
+                }
+            ]
+        },
+        "../../types/RoomState/RoomInfo": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "area_number",
+                    "type": {
+                        "type": "Number"
+                    }
+                },
+                {
+                    "id": 1,
                     "name": "serverUrl",
                     "type": {
                         "type": "String"
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 2,
                     "name": "roomId",
                     "type": {
                         "type": "String"
@@ -375,17 +403,11 @@ export const serviceProto: ServiceProto<ServiceType> = {
             ],
             "properties": [
                 {
-                    "id": 0,
-                    "name": "serverUrl",
+                    "id": 3,
+                    "name": "room_info",
                     "type": {
-                        "type": "String"
-                    }
-                },
-                {
-                    "id": 1,
-                    "name": "roomId",
-                    "type": {
-                        "type": "String"
+                        "type": "Reference",
+                        "target": "../../types/RoomState/RoomInfo"
                     }
                 }
             ]
@@ -438,16 +460,10 @@ export const serviceProto: ServiceProto<ServiceType> = {
                                 },
                                 {
                                     "id": 3,
-                                    "name": "serverUrl",
+                                    "name": "room_info",
                                     "type": {
-                                        "type": "String"
-                                    }
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "roomId",
-                                    "type": {
-                                        "type": "String"
+                                        "type": "Reference",
+                                        "target": "../../types/RoomState/RoomInfo"
                                     }
                                 }
                             ]

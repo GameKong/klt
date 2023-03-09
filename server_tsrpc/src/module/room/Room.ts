@@ -6,7 +6,7 @@
  */
 import { PrefixLogger } from "tsrpc";
 import { ecs } from "../../core/ecs/ECS";
-import { RoomConnection } from "../../server/room/model/ServerRoomModelComp";
+import { RoomConnection } from "../../servers/room/model/ServerRoomModelComp";
 import { sr } from "../../serverRoomEntry";
 import { ServiceType } from "../../shared/protocols/ServiceProtoRoom";
 import { RoleDetailed, RolePosition, RoleRotation } from "../../shared/types/RoleState";

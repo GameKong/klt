@@ -20,16 +20,11 @@ export const Config = {
     gate: {
         /** 网关服务器端口 */
         port: process.env['PORT'] || "2000",
-        /** 区服配置 */
-        area: [
-            { name: "艾欧尼亚", server: `${ip}:${process.env['PORT_MATCH1']}` || `${ip}:2100` },
-            { name: "诺克萨斯", server: `${ip}:${process.env['PORT_MATCH2']}` || `${ip}:2200` }
-        ]
     },
     /** 匹配服务配置 */
     match: {
-        /** 匹配服务默认端口 */
-        port: process.env['PORT'] || "2100",
+        /** 匹配服务区号 */
+        area_number: process.env['AREA_NUMBER'],
         /** 匹配日志输出间隔时间 */
         interval_logger: 5000,
         /** 执行匹配的间隔 */
@@ -39,12 +34,10 @@ export const Config = {
     room: {
         /** 是否打印长连接消息日志 */
         logMsg: false,
-        /** 房间服务默认端口 */
-        port: process.env['PORT'] || "2201",
-        /** 匹配服务服务器 HTTP 地址 */
-        match_url_http: process.env['SERVER_URL_MATCH'] || `${ip}:2100`,      // 如果使用强制 HTTPS，这里的IP要修改为证书中的域名
-        /** 匹配服务服务器 WebSocket 地址 */
-        match_url_ws: process.env['SERVER_URL_ROOM'] || `${ip}`,              // 如果使用强制 WSS，这里的IP要修改为证书中的域名
+        /** 房间服务区号 */
+        area_number: process.env['AREA_NUMBER'],
+        /** 要连接的匹配服务器区号 */
+        match_area_number: process.env['MATCH_AREA_NUMBER'],       // 如果使用强制 HTTPS，这里的IP要修改为证书中的域名
         /** 发送房间状态与匹配服务器同步数据的间隔时间 */
         update_state_interval: 1000,
         /** 每个房间的最大人数 */

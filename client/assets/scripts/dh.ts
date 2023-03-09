@@ -1,7 +1,7 @@
 import { _decorator, Component, Node } from 'cc';
 import { ConfigManager } from './core/configManager';
 import { EventManager } from './core/eventManager';
-import { Logger } from './core/logger';
+import { LoggerManager } from './core/loggerManager';
 import { NetManager } from './core/netManager';
 import { ResManager } from './core/resManager';
 import { ScheduleManager } from './core/scheduleManager';
@@ -14,7 +14,7 @@ export class dh {
     /**全局常量 */
     static gConst = GConst;
     //日志模块
-    static logger = Logger;
+    static loggerManager: LoggerManager;
     //本地永久数据
     static storageManager:StorageManager;
     //消息管理

@@ -6,6 +6,7 @@ import { NetManager } from "./core/netManager";
 import { UIManager } from './core/uiManager';
 import { UIHelper } from './tools/uiHelper';
 import { UIID } from './gui/uiDefines';
+import "k8w-linq-array"
 
 const { ccclass, property } = _decorator;
 
@@ -19,7 +20,9 @@ export class main extends Component {
     }
 
     async start() {
-        dh.uiManager.open(UIID.MainUI)
+        await this.initSyncManager()
+
+        dh.uiManager.open(UIID.Login)
         
         // this.test01();
         // this.testSpine();
@@ -27,6 +30,11 @@ export class main extends Component {
     }
 
 
+    async initSyncManager() {
+        await UIManager.Instance.init()
+        dh.uiManager = UIManager.Instance;
+    }
+    
     /**
      * 热更新部分仅逻辑测试，最终应该在 main.js实现相关逻辑
      */
@@ -61,7 +69,7 @@ export class main extends Component {
     async testSpine() {
         // dh.resManager.loadRes("resources", "logo/logo_new", Prefab, (err, data:Prefab)=>{
         //     if(err){
-        //         dh.logger.trace("err  load:" + err);
+        //         dh.loggerManager.trace("err  load:" + err);
         //         return
         //     }
         //     var node =  instantiate(data);

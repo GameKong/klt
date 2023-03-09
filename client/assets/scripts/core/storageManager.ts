@@ -37,8 +37,10 @@ export class StorageManager extends BaseManager {
      * @param value 存储值
      * @returns 
      */
-    set(key: string, value: any) {
-        key = `${key}_${this._id}`;
+    set(key: string, value: any, no_uid?: boolean) {
+        if (!no_uid) {
+            key = `${key}_${this._id}`;
+        }
 
         if (null == key) {
             console.error("存储的key不能为空");
@@ -79,15 +81,18 @@ export class StorageManager extends BaseManager {
      * 获取指定关键字的数据
      * @param key          获取的关键字
      * @param defaultValue 获取的默认值
+     * @param no_uid       不实用唯一id作为key
      * @returns 
      */
-    get(key: string, defaultValue?: any): string {
+    get(key: string, defaultValue?: any, no_uid?: boolean): string {
         if (null == key) {
             console.error("存储的key不能为空");
             return null!;
         }
 
-        key = `${key}_${this._id}`;
+        if (!no_uid) {
+            key = `${key}_${this._id}`;
+        }
 
         if (!PREVIEW) {
             key = EncryptUtil.md5(key);
@@ -105,9 +110,9 @@ export class StorageManager extends BaseManager {
     }
 
     /** 获取指定关键字的数值 */
-    getNumber(key: string, defaultValue: number = 0): number {
-        var r = this.get(key);
-        return Number(r) || defaultValue;
+    getNumber(key: string, defaultValue: number = 0, no_uid?: boolean): number {
+        var r = this.get(key, defaultValue, no_uid);
+        return Number(r) ?? defaultValue;
     }
 
     /** 获取指定关键字的布尔值 */

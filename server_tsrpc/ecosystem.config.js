@@ -11,8 +11,34 @@ module.exports = {
 			env_develop: {
 				"NODE_ENV": "develop",
 				"PORT": "2000",
-				"PORT_MATCH1": "4000",
-				"PORT_MATCH2": "5000",
+			}
+		},
+		// 匹配服务器 - 0号
+		{
+			name: "match-0",
+			script: "./dist/serverMatchEntry.js",
+			env_production: {
+				"NODE_ENV": "production",
+				"PORT": "4000"
+			},
+			env_develop: {
+				"NODE_ENV": "develop",
+				"AREA_NUMBER": 0
+			}
+		},
+		// 房间服务器 - 0号
+		{
+			name: "room-0",
+			script: "./dist/serverRoomEntry.js",
+			env_production: {
+				"NODE_ENV": "production",
+				"PORT": "4001",
+				"MATCH_AREA_NUMBER": "43.142.65.105:4000"
+			},
+			env_develop: {
+				"NODE_ENV": "develop",
+				"AREA_NUMBER": 0,	// 房间服区号
+				"MATCH_AREA_NUMBER": 0 // 要连接的匹配服区号
 			}
 		},
 		// 匹配服务器 - 1号
@@ -21,11 +47,11 @@ module.exports = {
 			script: "./dist/serverMatchEntry.js",
 			env_production: {
 				"NODE_ENV": "production",
-				"PORT": "4000"
+				"PORT": "5000"
 			},
 			env_develop: {
 				"NODE_ENV": "develop",
-				"PORT": "4000"
+				"AREA_NUMBER": 1
 			}
 		},
 		// 房间服务器 - 1号
@@ -34,45 +60,13 @@ module.exports = {
 			script: "./dist/serverRoomEntry.js",
 			env_production: {
 				"NODE_ENV": "production",
-				"PORT": "4001",
-				"SERVER_URL_ROOM": "43.142.65.105",
-				"SERVER_URL_MATCH": "43.142.65.105:4000"
-			},
-			env_develop: {
-				"NODE_ENV": "develop",
-				"PORT": "4001",
-				"SERVER_URL_ROOM": "127.0.0.1",
-				"SERVER_URL_MATCH": "127.0.0.1:4000"
-			}
-		},
-		// 匹配服务器 - 2号
-		{
-			name: "match-2",
-			script: "./dist/serverMatchEntry.js",
-			env_production: {
-				"NODE_ENV": "production",
-				"PORT": "5000"
-			},
-			env_develop: {
-				"NODE_ENV": "develop",
-				"PORT": "5000"
-			}
-		},
-		// 房间服务器 - 2号
-		{
-			name: "room-2",
-			script: "./dist/serverRoomEntry.js",
-			env_production: {
-				"NODE_ENV": "production",
 				"PORT": "5001",
-				"SERVER_URL_ROOM": "43.142.65.105",
-				"SERVER_URL_MATCH": "43.142.65.105:5000"
+				"MATCH_AREA_NUMBER": "43.142.65.105:5000"
 			},
 			env_develop: {
 				"NODE_ENV": "develop",
-				"PORT": "5001",
-				"SERVER_URL_ROOM": "127.0.0.1",
-				"SERVER_URL_MATCH": "127.0.0.1:5000"
+				"AREA_NUMBER": 1,
+				"MATCH_AREA_NUMBER": 0 // 要连接的匹配服区号
 			}
 		}
 	]

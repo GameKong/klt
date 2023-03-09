@@ -6,15 +6,15 @@ const tsrpcConf: TsrpcConfig = {
         {
             ptlDir: 'src/shared/protocols/gate',                          // 协议目录
             output: 'src/shared/protocols/ServiceProtoGate.ts',           // 生成的ServiceProto的路径
-            apiDir: 'src/server/gate/api',                               // API 目录
+            apiDir: 'src/servers/gate/api',                               // API 目录
             docDir: 'docs/gate',                                         // API 文档目录
-            // ptlTemplate: CodeTemplate.getExtendedPtl(),
+            ptlTemplate: CodeTemplate.getExtendedPtl(),
             // msgTemplate: CodeTemplate.getExtendedMsg(),
         },
         {
             ptlDir: 'src/shared/protocols/match',                         // 协议目录
             output: 'src/shared/protocols/ServiceProtoMatch.ts',          // 生成的ServiceProto的路径
-            apiDir: 'src/server/match/api',                              // API 目录
+            apiDir: 'src/servers/match/api',                              // API 目录
             docDir: 'docs/match',                                        // API 文档目录
             // ptlTemplate: CodeTemplate.getExtendedPtl(),
             // msgTemplate: CodeTemplate.getExtendedMsg(),
@@ -22,7 +22,7 @@ const tsrpcConf: TsrpcConfig = {
         {
             ptlDir: 'src/shared/protocols/room',                          // 协议目录
             output: 'src/shared/protocols/ServiceProtoRoom.ts',           // 生成的ServiceProto的路径
-            apiDir: 'src/server/room/api',                               // API 目录
+            apiDir: 'src/servers/room/api',                               // API 目录
             docDir: 'docs/room',                                         // API 文档目录
             ptlTemplate: CodeTemplate.getExtendedPtl(),
             // msgTemplate: CodeTemplate.getExtendedMsg(),

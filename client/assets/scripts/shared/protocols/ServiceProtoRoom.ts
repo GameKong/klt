@@ -53,6 +53,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
+    "version": 1,
     "services": [
         {
             "id": 0,
@@ -79,12 +80,12 @@ export const serviceProto: ServiceProto<ServiceType> = {
             }
         },
         {
-            "id": 3,
+            "id": 24,
             "name": "client/RoleMove",
             "type": "msg"
         },
         {
-            "id": 4,
+            "id": 27,
             "name": "client/RoleState",
             "type": "msg"
         },
@@ -104,37 +105,37 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "api"
         },
         {
-            "id": 8,
+            "id": 17,
             "name": "server/Chat",
             "type": "msg"
         },
         {
-            "id": 9,
+            "id": 25,
             "name": "server/RoleAttack",
             "type": "msg"
         },
         {
-            "id": 10,
+            "id": 28,
             "name": "server/RoleJoin",
             "type": "msg"
         },
         {
-            "id": 11,
+            "id": 29,
             "name": "server/RoleLeave",
             "type": "msg"
         },
         {
-            "id": 12,
+            "id": 26,
             "name": "server/RoleMove",
             "type": "msg"
         },
         {
-            "id": 13,
+            "id": 31,
             "name": "server/RoleRevive",
             "type": "msg"
         },
         {
-            "id": 14,
+            "id": 30,
             "name": "server/RoomRoleState",
             "type": "msg"
         }
@@ -174,7 +175,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 6,
                     "name": "amount",
                     "type": {
                         "type": "Number",
@@ -182,7 +183,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 7,
                     "name": "max",
                     "type": {
                         "type": "Number",
@@ -212,7 +213,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
+                    "id": 1,
                     "name": "type",
                     "type": {
                         "type": "Literal",
@@ -228,7 +229,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
+                    "id": 1,
                     "name": "roomName",
                     "type": {
                         "type": "String"
@@ -295,7 +296,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 4,
+                    "id": 5,
                     "name": "joystick",
                     "type": {
                         "type": "Boolean"
@@ -303,7 +304,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 5,
+                    "id": 6,
                     "name": "skillId",
                     "type": {
                         "type": "Number"
@@ -311,7 +312,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 6,
+                    "id": 7,
                     "name": "targetId",
                     "type": {
                         "type": "String"
@@ -496,7 +497,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             ],
             "properties": [
                 {
-                    "id": 0,
+                    "id": 2,
                     "name": "userId",
                     "type": {
                         "type": "Number"
@@ -524,7 +525,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             ],
             "properties": [
                 {
-                    "id": 0,
+                    "id": 3,
                     "name": "roleId",
                     "type": {
                         "type": "String"
@@ -544,21 +545,21 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
+                    "id": 4,
                     "name": "id",
                     "type": {
                         "type": "String"
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 5,
                     "name": "name",
                     "type": {
                         "type": "String"
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 6,
                     "name": "max",
                     "type": {
                         "type": "Number",
@@ -566,7 +567,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 7,
                     "name": "timeLastEmpty",
                     "type": {
                         "type": "Number"
@@ -574,7 +575,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 4,
+                    "id": 8,
                     "name": "timeStartMatch",
                     "type": {
                         "type": "Number"
@@ -582,14 +583,14 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 5,
+                    "id": 9,
                     "name": "timeUpdate",
                     "type": {
                         "type": "Number"
                     }
                 },
                 {
-                    "id": 6,
+                    "id": 12,
                     "name": "roles",
                     "type": {
                         "type": "Array",
@@ -600,7 +601,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 7,
+                    "id": 13,
                     "name": "npcs",
                     "type": {
                         "type": "Array",
@@ -611,7 +612,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 8,
+                    "id": 10,
                     "name": "messages",
                     "type": {
                         "type": "Array",
@@ -626,7 +627,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                                     }
                                 },
                                 {
-                                    "id": 1,
+                                    "id": 4,
                                     "name": "role",
                                     "type": {
                                         "type": "Reference",
@@ -650,7 +651,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
+                    "id": 3,
                     "name": "roleInfo",
                     "type": {
                         "type": "Reference",
@@ -658,7 +659,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 0,
                     "name": "state",
                     "type": {
                         "type": "Reference",
@@ -666,7 +667,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 1,
                     "name": "attributes",
                     "type": {
                         "type": "Interface",
@@ -734,7 +735,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 4,
                     "name": "roleInfo",
                     "type": {
                         "type": "Reference",
@@ -761,14 +762,14 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 2,
                     "name": "skillId",
                     "type": {
                         "type": "Number"
                     }
                 },
                 {
-                    "id": 2,
+                    "id": 4,
                     "name": "state",
                     "type": {
                         "type": "Reference",
@@ -776,7 +777,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 3,
+                    "id": 1,
                     "name": "targetId",
                     "type": {
                         "type": "String"
@@ -784,7 +785,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "optional": true
                 },
                 {
-                    "id": 4,
+                    "id": 3,
                     "name": "pos",
                     "type": {
                         "type": "Reference",
@@ -815,7 +816,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
+                    "id": 4,
                     "name": "role",
                     "type": {
                         "type": "Reference",
@@ -823,7 +824,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 0,
                     "name": "time",
                     "type": {
                         "type": "Date"
@@ -842,7 +843,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     }
                 },
                 {
-                    "id": 1,
+                    "id": 2,
                     "name": "roleInfo",
                     "type": {
                         "type": "Reference",

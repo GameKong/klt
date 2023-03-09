@@ -28,7 +28,8 @@ let white_res: LoadList[] = [
         bundle_name: "public",
         res_list: new Map<AssetType, string[]>([
             [Prefab, [
-                "prefabs/blackLayer"
+                "prefabs/blackLayer",
+                "prefabs/toast"
             ]],
             [SpriteAtlas, [
                 "images/public",

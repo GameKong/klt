@@ -9,8 +9,8 @@ import { BaseConf } from "../../base";
 
 /** 加入房间服务器进入工作状态请求数据 */
 export interface ReqRoomServerJoin {
-    /** 房间服务器 WebSocket 地址 */
-    serverUrl: string
+    /** 加入的房间服务器区号 */
+    area_number: number
 }
 
 /** 加入房间服务器进入工作状态响应数据 */

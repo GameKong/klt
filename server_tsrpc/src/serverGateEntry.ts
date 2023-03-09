@@ -7,8 +7,8 @@
 import { ecs } from "./core/ecs/ECS";
 import { CommonUtil } from "./module/common/CommonUtil";
 import { Config } from "./module/config/Config";
-import { ServerGate } from "./server/gate/ServerGate";
-import { ServerGateSystem } from "./server/gate/ServerGateSystem";
+import { ServerGate } from "./servers/gate/ServerGate";
+import { ServerGateSystem } from "./servers/gate/ServerGateSystem";
 
 /** 网关服务器对象 */
 export var sg: ServerGate = null!

@@ -4,7 +4,7 @@
  * @LastEditors: dgflash
  * @LastEditTime: 2022-07-01 09:41:05
  */
-import { RoomConnection } from "../../../../server/room/model/ServerRoomModelComp";
+import { RoomConnection } from "../../../../servers/room/model/ServerRoomModelComp";
 import { Role } from "../../Role";
 
 /** 客户端发数据房间转发移动命令（摇杆方向、目标方向） */

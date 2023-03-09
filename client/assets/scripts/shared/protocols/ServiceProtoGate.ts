@@ -24,6 +24,7 @@ export interface ServiceType {
 }
 
 export const serviceProto: ServiceProto<ServiceType> = {
+    "version": 1,
     "services": [
         {
             "id": 0,
@@ -36,7 +37,7 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "api"
         },
         {
-            "id": 2,
+            "id": 3,
             "name": "Register",
             "type": "api"
         }
@@ -54,24 +55,28 @@ export const serviceProto: ServiceProto<ServiceType> = {
                     "type": {
                         "type": "Array",
                         "elementType": {
-                            "type": "Interface",
-                            "properties": [
-                                {
-                                    "id": 0,
-                                    "name": "name",
-                                    "type": {
-                                        "type": "String"
-                                    }
-                                },
-                                {
-                                    "id": 1,
-                                    "name": "server",
-                                    "type": {
-                                        "type": "String"
-                                    }
-                                }
-                            ]
+                            "type": "Reference",
+                            "target": "../../models/dbUrl/DbUrl"
                         }
+                    }
+                }
+            ]
+        },
+        "../../models/dbUrl/DbUrl": {
+            "type": "Interface",
+            "properties": [
+                {
+                    "id": 0,
+                    "name": "url",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "port",
+                    "type": {
+                        "type": "Number"
                     }
                 }
             ]
@@ -80,15 +85,22 @@ export const serviceProto: ServiceProto<ServiceType> = {
             "type": "Interface",
             "properties": [
                 {
-                    "id": 0,
-                    "name": "server",
+                    "id": 3,
+                    "name": "area_number",
                     "type": {
-                        "type": "String"
+                        "type": "Number"
                     }
                 },
                 {
                     "id": 1,
                     "name": "username",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "password",
                     "type": {
                         "type": "String"
                     }
@@ -135,6 +147,13 @@ export const serviceProto: ServiceProto<ServiceType> = {
                 {
                     "id": 0,
                     "name": "username",
+                    "type": {
+                        "type": "String"
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "password",
                     "type": {
                         "type": "String"
                     }

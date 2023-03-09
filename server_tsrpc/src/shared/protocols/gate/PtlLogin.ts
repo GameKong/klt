@@ -9,10 +9,12 @@ import { BaseResponse } from "../base";
 
 /** 登录请求信息 */
 export interface ReqLogin {
-    /** 匹配服务器地址 */
-    server: string,
+    /** 连接的匹配服务器区号 */
+    area_number: number,
     /** 用户名 */
-    username: string
+    username: string,
+    /** 密码 */
+    password: string
 }
 
 /** 开始匹配响应信息 */

@@ -16,6 +16,8 @@ export interface DbUser {
     key: number,
     /** 用户名 */
     username: string,
+    /** 密码 */
+    password: string,
     /** 创建时间 */
     createtime: Date,
     /** 玩家位置信息 */
@@ -37,13 +39,14 @@ export class User {
      * @param username 玩家名
      * @returns 玩家自增唯一编号
      */
-    static addUser(username: string): Promise<number> {
+    static addUser(username: string, password: string): Promise<number> {
         return new Promise(async (resolve: Function, reject: Function) => {
             var key = await MongoDB.getNextSequenceValue(DbCollectionName.user);
             // 插入用户数据
             await this.c.insertOne({
                 key,
                 username: username,
+                password: password,
                 createtime: new Date(),
                 pos: { x: 0, y: 1.7, z: 0 },                        // 初始位置
                 rotation: { x: 0, y: 0, z: 0, w: 1 }                // 初始旋转

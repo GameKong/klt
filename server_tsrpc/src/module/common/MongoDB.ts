@@ -6,6 +6,7 @@
  */
 import { Db, MongoClient } from "mongodb";
 import { Config } from "../config/Config";
+import { ServerUrlUtils } from "./serverUrlUtils";
 
 /** 数据表名 */
 export enum DbCollectionName {
@@ -13,6 +14,8 @@ export enum DbCollectionName {
     counters = "counters",
     /** 用户表 */
     user = "user",
+    /** 服务器地址配置 */
+    servers = "servers",
 }
 
 export class MongoDB {
@@ -22,7 +25,7 @@ export class MongoDB {
     static async init() {
         const url = `mongodb://${Config.mongodb}/`;
         const client = await new MongoClient(url).connect();        // 连接数据库
-        this.db = client.db("oops-framework");                      // 打开数据库，如果不存在就创建一个
+        this.db = client.db("kongl_moba");                          // 打开数据库，如果不存在就创建一个
 
         // 初始化数据表
         for (var name in DbCollectionName) {
@@ -30,6 +33,8 @@ export class MongoDB {
                 await this.db.createCollection(name);
             }
         }
+
+        await ServerUrlUtils.init();
     }
 
     /** 数据表是否存在 */

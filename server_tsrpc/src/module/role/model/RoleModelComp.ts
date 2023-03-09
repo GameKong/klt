@@ -6,7 +6,7 @@
  */
 
 import { ecs } from "../../../core/ecs/ECS";
-import { RoomConnection } from "../../../server/room/model/ServerRoomModelComp";
+import { RoomConnection } from "../../../servers/room/model/ServerRoomModelComp";
 import { RoleInfo, RoleState } from "../../../shared/types/RoleState";
 import { DbUser } from "../../account/bll/User";
 import { Room } from "../../room/Room";

@@ -4,6 +4,7 @@ import { LayerUI } from '../gui/layerUI';
 import { UIMap } from '../gui/uiMap';
 import { LayerNotify } from '../gui/layerNotify';
 import { BaseManager } from './baseManager';
+import { LayerSwallow } from '../gui/layerSwallow';
 
 /**
  * 
@@ -35,6 +36,9 @@ export class UIManager extends BaseManager {
     /**Notify节点 */
     layer_nofity: LayerNotify | null = null;
 
+    /**屏蔽层节点 */
+    layer_swallow: LayerSwallow | null = null;
+
     /**界面映射 */
     ui_map: UIMap;
 
@@ -44,7 +48,10 @@ export class UIManager extends BaseManager {
         this.g_root = find("Canvas/GRoot");
         this.layer_ui = new LayerUI(LayerType.UI, this.g_root);
         this.layer_nofity = new LayerNotify(LayerType.Notify, this.g_root);
+        this.layer_swallow = new LayerSwallow(LayerType.Swallow, this.g_root);
+        
         await this.layer_nofity.init();
+        this.layer_swallow.init();
     }
 
     /** toast 提示 */

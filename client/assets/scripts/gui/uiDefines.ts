@@ -53,7 +53,9 @@ export enum LayerType {
     /** 滚动消息提示层 */
     Notify = "LayerNotify",
     /** 新手引导层 */
-    Guide = "LayerGuide"
+    Guide = "LayerGuide",
+    /** 屏蔽层 */
+    Swallow = "LayerSwallow",
 }
 
 /**UI入场动画类型 */
@@ -121,11 +123,17 @@ export enum UIID {
     /** 主界面 */
     MainUI = 1,
     /** 玩家信息界面 */
-    Player = 2
+    Player = 2,
+    /** 登陆界面 */
+    Login = 3,
+    /** 匹配界面 */
+    Match = 4,
 }
 
 /** 打开界面方式的配置数据 */
 export let UIConfigData: { [key: number]: UIConfig } = {
     [UIID.MainUI]: new UIConfig({ ui_id: UIID.MainUI, bundle_name: "mainUI", prefab_path: "mainUI", dark_bg: false, main: true }),
     [UIID.Player]: new UIConfig({ ui_id: UIID.Player, prefab_path: "playerMain", bundle_name: "player", ui_action: UIAction.ScaleIn }),
+    [UIID.Login]: new UIConfig({ ui_id: UIID.Login, prefab_path: "ui_login", bundle_name: "login", dark_bg: false, full_screen: true }),
+    [UIID.Match]: new UIConfig({ ui_id: UIID.Match, prefab_path: "ui_match", bundle_name: "match", dark_bg: false, full_screen: true }),
 }

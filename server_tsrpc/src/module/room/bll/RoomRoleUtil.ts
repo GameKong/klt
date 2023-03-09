@@ -6,7 +6,7 @@
  */
 import * as uuid from 'uuid';
 import { ecs } from "../../../core/ecs/ECS";
-import { RoomConnection } from "../../../server/room/model/ServerRoomModelComp";
+import { RoomConnection } from "../../../servers/room/model/ServerRoomModelComp";
 import { RoleDetailed, RoleInfo, RolePosition, RoleRotation } from "../../../shared/types/RoleState";
 import { DbUser } from "../../account/bll/User";
 import { RoleSkillLearnedComp } from '../../battle/skill/model/RoleSkillLearnedComp';

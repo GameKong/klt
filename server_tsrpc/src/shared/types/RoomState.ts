@@ -48,3 +48,13 @@ export interface RoomDetailed {
         content: string
     }[]
 }
+
+/** 房间基础信息 */
+export interface RoomInfo {
+    /** 房间服务器区号 */
+    area_number: number,
+    /** 房间服务器地址 */
+    serverUrl: string,
+    /** 房间编号 */
+    roomId: string
+}

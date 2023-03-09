@@ -7,8 +7,8 @@
 import { ecs } from "./core/ecs/ECS";
 import { CommonUtil } from "./module/common/CommonUtil";
 import { Config } from "./module/config/Config";
-import { ServerMatch } from "./server/match/ServerMatch";
-import { ServerMatchSystem } from "./server/match/ServerMatchSystem";
+import { ServerMatch } from "./servers/match/ServerMatch";
+import { ServerMatchSystem } from "./servers/match/ServerMatchSystem";
 
 /** 匹配服务器对象 */
 export var sm: ServerMatch = null!

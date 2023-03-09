@@ -27,6 +27,7 @@ export class ScheduleParam {
     repeat?: number = macro.REPEAT_FOREVER;
     delay?: number;
     paused?: boolean;
+    target?: any;
 }
 
 /**定时器管理器 */
@@ -53,14 +54,14 @@ export class ScheduleManager extends BaseManager {
     * @param interval  固定间隔触发时间，interval 值为 0，那么回调函数每一帧都会被调用，但如果是这样请使用scheduleUpdate
     * @returns string
     */
-    schedule(parma: ScheduleParam): string {
+    schedule(param: ScheduleParam): string {
         let uuid = `${this._schedule_count++}`;
         let target: ScheduleData = {
             uuid: uuid,
-            callback: parma.callback
+            callback: param.callback
         };
         this._schedules[uuid] = target;
-        this.scheduler.schedule(parma.callback, target, parma.interval, parma.repeat, parma.delay, parma.paused);
+        this.scheduler.schedule(param.callback.bind(param.target), target, param.interval, param.repeat, param.delay, param.paused);
 
         return uuid;
     }
@@ -71,17 +72,17 @@ export class ScheduleManager extends BaseManager {
      * @param delay     延时触发时间
      * @returns string
      */
-    scheduleOnce(parma: ScheduleParam): string {
+    scheduleOnce(param: ScheduleParam): string {
         let uuid = `${this._schedule_count++}`;
         let target: ScheduleData = {
             uuid: uuid,
-            callback: parma.callback
+            callback: param.callback
         };
         this._schedules[uuid] = target;
         this.scheduler.schedule((dt: number) => {
-            parma.callback(dt)
+            param.callback.bind(param.target)(dt)
             this.unschedule(uuid);
-        }, target, 0, 0, parma.delay, parma.paused);
+        }, target, 0, 0, param.delay, param.paused);
 
         return uuid;
     }

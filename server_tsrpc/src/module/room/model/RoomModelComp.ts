@@ -7,7 +7,7 @@
 import { PrefixLogger } from "tsrpc";
 import { Collection } from "../../../core/collection/Collection";
 import { ecs } from "../../../core/ecs/ECS";
-import { RoomConnection } from "../../../server/room/model/ServerRoomModelComp";
+import { RoomConnection } from "../../../servers/room/model/ServerRoomModelComp";
 import { RoleState } from "../../../shared/types/RoleState";
 import { RoomDetailed } from "../../../shared/types/RoomState";
 import { Role } from "../../role/Role";

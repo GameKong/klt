@@ -7,7 +7,9 @@
 /** 用户注册请求 */
 export interface ReqRegister {
     /** 用户名 */
-    username: string
+    username: string,
+    /** 密码 */
+    password: string
 }
 
 /** 用户注册应响应 */

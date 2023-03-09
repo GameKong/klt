@@ -6,8 +6,8 @@ import { LoadList } from "./resManager";
 
 /**基础配置表，启动就加载 */
 let base_config_list: string[] = [
-    "test1",
-    "test2"
+    "buff",
+    "skill"
 ]
 
 /**事件管理器 */

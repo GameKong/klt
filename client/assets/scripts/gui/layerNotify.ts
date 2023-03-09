@@ -42,7 +42,7 @@ export class LayerNotify extends BaseUINode {
 
     async init() {
         // 加载预制件资源
-        this.prefab = await dh.resManager.loadRes("resources", GPrefab.toast, Prefab);
+        this.prefab = await dh.resManager.loadRes("public", GPrefab.toast, Prefab);
     }
 
     add(text: string | string[]) {

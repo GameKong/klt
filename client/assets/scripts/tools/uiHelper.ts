@@ -1,7 +1,9 @@
 import { assetManager, BlockInputEvents, Color, instantiate, Layers, Node, Prefab, ResolutionPolicy, screen, Sprite, SpriteFrame, tween, UIOpacity, UITransform, Vec3, view, Widget } from 'cc';
 import { dh } from '../dh';
 import { GConst } from '../globals/gConst';
+import { GErrorCodeTip } from '../globals/gErrorCodeTip';
 import { UIAction } from '../gui/uiDefines';
+import { ErrorCode } from '../shared/models/errorCode';
 
 /**
  * 
@@ -45,8 +47,8 @@ export class UIHelper {
         // transform!.width = finalW;
         // transform!.height = finalH;
 
-        dh.logger.trace(dr, "设计尺寸");
-        dh.logger.trace(s, "屏幕尺寸");
+        dh.loggerManager.trace(dr, "设计尺寸");
+        dh.loggerManager.trace(s, "屏幕尺寸");
     }
     /**创建吞噬触摸节点 */
     static createSwallowTouchesNode(name: string = "swallowTouchNode") {
@@ -105,8 +107,8 @@ export class UIHelper {
 
     static runEnterAction(node: Node, action_type?: UIAction, callback?) {
         if (action_type == UIAction.ScaleIn) {
-            node.setScale(new Vec3(0.1, 0.1, 0.1));
             tween(node)
+                .to(0, { scale: new Vec3(0.1, 0.1, 0.1) })
                 .to(0.3, { scale: new Vec3(1, 1, 1) }, {
                     easing: "backOut"
                 })
@@ -114,5 +116,22 @@ export class UIHelper {
                 .start();
         }
 
+    }
+
+    static toastError(code?: string|number) {
+        let errMessage = "";
+        if (code) {
+            if (GErrorCodeTip[code]) {
+                errMessage = GErrorCodeTip[code];
+            }
+            else {
+                errMessage = `error, code is ${code.toString()}`;
+            }
+        }
+        else {
+            errMessage = "no error code";
+        }
+
+        dh.uiManager.toast(errMessage)
     }
 }
