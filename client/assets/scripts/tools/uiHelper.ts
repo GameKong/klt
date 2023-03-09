@@ -47,8 +47,10 @@ export class UIHelper {
         // transform!.width = finalW;
         // transform!.height = finalH;
 
-        dh.loggerManager.trace(dr, "设计尺寸");
-        dh.loggerManager.trace(s, "屏幕尺寸");
+        if (dh.loggerManager) {
+            dh.loggerManager.trace(dr, "设计尺寸");
+            dh.loggerManager.trace(s, "屏幕尺寸");
+        }
     }
     /**创建吞噬触摸节点 */
     static createSwallowTouchesNode(name: string = "swallowTouchNode") {

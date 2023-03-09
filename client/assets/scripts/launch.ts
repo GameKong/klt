@@ -12,6 +12,7 @@ import { UIID } from './gui/uiDefines';
 import { ResGameArea } from './shared/protocols/gate/PtlGameArea';
 import { UIManager } from './core/uiManager';
 import { LoggerManager } from './core/loggerManager';
+import { EcsManager } from './core/ecsManager';
 
 const { ccclass, property } = _decorator;
 
@@ -72,7 +73,6 @@ export class Launch extends Component {
 
         // 热更
         this.hotUpdate()
-
     }
 
     /**初始化管理器 */
@@ -98,6 +98,9 @@ export class Launch extends Component {
 
         NetManager.Instance.init()
         dh.netManager = NetManager.Instance;
+
+        EcsManager.Instance.init()
+        dh.ecsManager = EcsManager.Instance;
     }
 
     /**初始化加载UI */

@@ -15,7 +15,10 @@ export const GConst = {
     },
 
     /** 无效服务器 */
-    InValidServer: -1
+    InValidServer: -1,
+
+    /** ecs系统执行间隔时间 */
+    EcsExcuteTime: 1000
 }
 
 /** 本地数据加密密钥 */

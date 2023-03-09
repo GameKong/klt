@@ -8,6 +8,7 @@ import { ScheduleManager } from './core/scheduleManager';
 import { UIManager } from './core/uiManager';
 import { StorageManager } from './core/storageManager';
 import { GConst } from './globals/gConst';
+import { EcsManager } from './core/ecsManager';
 const { ccclass, property } = _decorator;
 
 export class dh {
@@ -29,5 +30,7 @@ export class dh {
     static configManager: ConfigManager;
     /**网络表管理器 */
     static netManager: NetManager;
+    /**ecs管理器 */
+    static ecsManager: EcsManager;
 }
 
