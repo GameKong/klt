@@ -45,7 +45,7 @@ export class UIManager extends BaseManager {
     async init() {
         super.init()
 
-        this.g_root = find("Canvas/GRoot");
+        this.g_root = find("root/gui/GRoot");
         this.layer_ui = new LayerUI(LayerType.UI, this.g_root);
         this.layer_nofity = new LayerNotify(LayerType.Notify, this.g_root);
         this.layer_swallow = new LayerSwallow(LayerType.Swallow, this.g_root);

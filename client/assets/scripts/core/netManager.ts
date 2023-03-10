@@ -10,6 +10,7 @@ import { WECHAT } from "cc/env";
 import { ShareConfig } from "../shared/models/ShareConfig";
 import { GameServerConfig } from "../globals/gClass";
 import { RoomData } from "../data/roomData";
+import { RoomEntity } from "../game/room/roomEntity";
 
 /**网络管理器 */
 export class NetManager extends BaseManager {
@@ -65,7 +66,7 @@ export class NetManager extends BaseManager {
      *  创建连接房间服务器 Websocket 客户端
      * @returns WsClient
      */
-    createWscRoom() {
+    createWscRoom(e:RoomEntity) {
         // 创建客户端与房间服务器的 WebSocket 连接
         let ws_room = new (WECHAT ? WsClient_Miniapp : WsClient_Browser)(ServiceProtoRoom, {
             server: RoomData.serverUrl,
@@ -80,7 +81,7 @@ export class NetManager extends BaseManager {
         this.net_utils.flowClientMsg(ws_room);
         this.net_utils.flowAuth(ws_room);
         this.net_utils.flowSwallowTouch(ws_room);
-        this.net_utils.flowPostDisconnect(ws_room);
+        this.net_utils.flowPostDisconnect(ws_room, e);
         
         this.websocket_room = ws_room
     }

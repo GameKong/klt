@@ -44,7 +44,6 @@ export class ServerRoomAuthSystem extends ecs.ComblockSystem implements ecs.IEnt
 
             // 定时与匹配服务器同步房间状态
             interval = setInterval(() => {
-                comp.call.server.logger.log(serverRoomModel.rooms.array.length)
                 conn.sendMsg(`admin/RoomUpdateState`, {
                     rooms: serverRoomModel.rooms.array.map((v) => {
                         return {

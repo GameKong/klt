@@ -35,3 +35,25 @@ export const GPrefab = {
     /** toast飘浮框 */
     toast: "prefabs/toast",
 }
+
+/** 角色属性类型 */
+export enum RoleAttributeType {
+    /** 当前生命值 */
+    hp = "hp",
+    /** 生命最大值 */
+    hpMax = "hpMax",
+    /** 移动速度 */
+    speed = "speed",
+    /** 攻击力 */
+    ad = "ad",
+    /** 魔力 */
+    ap = "ap"
+}
+
+/** 角色阵营类型 */
+export enum RoleCampType {
+    /** 友军 */
+    Friendly = 0,
+    /** 敌军 */
+    Enemy = 1
+}

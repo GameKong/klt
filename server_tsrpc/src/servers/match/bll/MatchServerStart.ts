@@ -44,10 +44,10 @@ export class MatchServerStartSystem extends ecs.ComblockSystem implements ecs.IE
         setInterval(() => {
             server.logger.log(`
         [匹配服务器状态播报]
-        - 房间已连接数量 = ${rooms.count(v => !!v.state)}
-        - 房间连接中数量 = ${rooms.count(v => !v.state)}
-        - 房间总数　　　 = ${rooms.sum(v => v.state?.rooms.length ?? 0)}
-        - 房内用户数　　 = ${rooms.sum(v => v.state?.rooms.sum(v => v.amount) ?? 0)}\n`);
+        - 房间服已连接数量 = ${rooms.count(v => !!v.state)}
+        - 房间服连接中数量 = ${rooms.count(v => !v.state)}
+        - 房间总数 = ${rooms.sum(v => v.state?.rooms.length ?? 0)}
+        - 房内用户数 = ${rooms.sum(v => v.state?.rooms.sum(v => v.amount) ?? 0)}\n`);
         }, Config.match.interval_logger);
 
         // 定时匹配验证（考虑修改为触发时匹配验证）

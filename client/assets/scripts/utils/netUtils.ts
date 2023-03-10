@@ -10,6 +10,8 @@ import { UIHelper } from "../tools/uiHelper";
 import { DbUrl } from "../shared/models/dbUrl";
 import { GLocalKey } from "../globals/gLocalKey";
 import { Account } from "../data/account";
+import { RoomEntity } from "../game/room/roomEntity";
+import { RoomOwnerLeaveComp } from "../game/room/system/roomOperateSystems/roomOwnerLeave";
 
 /** TSRPC网络模块 */
 export class NetUtils {
@@ -121,12 +123,12 @@ export class NetUtils {
     }
 
     /** 客户端与服务器断开事件 */
-    public flowPostDisconnect(client: any) {
+    public flowPostDisconnect(client: any, e:RoomEntity) {
         client.flows.postDisconnectFlow.push(v => {
             // 非客户端手动断开时处理（例：网络错误、服务器关闭）
             if (!v.isManual) {
                 dh.uiManager.toast("服务器维护");
-                // e.add(RoomOwnerLeaveComp);
+                e.add(RoomOwnerLeaveComp);
             }
             return v;
         });

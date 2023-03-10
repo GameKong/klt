@@ -17,6 +17,9 @@ import { UIID } from '../../gui/uiDefines';
 import { MatchCell } from './matchCell';
 import { ScheduleParam } from '../../core/scheduleManager';
 import { RoomData } from '../../data/roomData';
+import { Single } from '../../game/common/singleEntity';
+import { ECS } from '../../ecs/ECS';
+import { RoomEntity } from '../../game/room/roomEntity';
 
 const { ccclass, property } = _decorator;
 
@@ -56,6 +59,7 @@ export class Match extends BaseUI {
 
     start() {
         this.reloadRoomList();
+        Single.room_entity = ECS.getEntity(RoomEntity)
     }
 
     /** 刷新房间列表 */

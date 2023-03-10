@@ -1,6 +1,7 @@
 import { log, warn } from "cc";
 import { ECS } from "../ecs/ECS";
 import { ECSRootSystem } from "../ecs/ECSSystem";
+import { ECSRoomSystem } from "../game/room/roomSystem";
 import { GConst } from "../globals/gConst";
 import { BaseManager } from "./baseManager";
 
@@ -19,7 +20,7 @@ export class EcsManager extends BaseManager {
     protected async initEcsSystem() {
         let root_system = this.root_system;
         // root_system.add(new EcsInitializeSystem());
-        // root_system.add(new EcsRoomSystem());
+        root_system.add(new ECSRoomSystem());
         // root_system.add(new EcsSceneSystem());
         // root_system.add(new EcsRoleSystem());
         // root_system.add(new EcsSkillSystem());
